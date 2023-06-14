@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
-import PopUp from "./PopUp";
-import PopUpAdd from "./PopUpAdd";
 
 export default function EditAbo() {
   const { state } = useLocation();
@@ -71,15 +69,7 @@ export default function EditAbo() {
           <h4>Facturation </h4>
           <p>Prelevement</p>
         </div>
-        {state.userInfo.isVideoPlus === 1 ? (
-          <div>
-            <PopUp state={state} />
-          </div>
-        ) : (
-          <div>
-            <PopUpAdd state={state} />
-          </div>
-        )}
+        {state.userInfo.isVideoPlus === 1 ? <div /> : <div />}
       </div>
     </div>
   );

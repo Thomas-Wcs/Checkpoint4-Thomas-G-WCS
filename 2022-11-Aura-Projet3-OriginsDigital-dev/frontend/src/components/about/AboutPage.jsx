@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./aboutPage.css";
-import filmbanderole from "../../assets/filmband.png";
+// import filmbanderole from "../../assets/filmband.png";
 import useAPI from "../../api/useAPI";
 
 function AboutPage() {
@@ -30,7 +30,7 @@ function AboutPage() {
 
   return (
     <div className="about-main-section">
-      <img className="film-banderole-about" src={filmbanderole} alt="" />
+      {/* <img className="film-banderole-about" src={filmbanderole} alt="" /> */}
       <div className="texte-about-propos">
         <h1>A propos</h1>
         <p className="about-para-profil-section">
