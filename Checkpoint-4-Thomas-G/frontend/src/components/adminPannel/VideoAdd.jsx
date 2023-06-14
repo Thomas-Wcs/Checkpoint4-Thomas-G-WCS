@@ -33,8 +33,8 @@ function VideoAdd() {
 
     api
       .post("/images", formData)
-
-      .then(() => {
+      .then((response) => {
+        console.log(response);
         setVideosChanging(!videosChanging);
       })
       .catch((err) => console.error(err));

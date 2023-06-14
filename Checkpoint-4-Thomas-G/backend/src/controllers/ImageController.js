@@ -48,7 +48,6 @@ const add = async (req, res) => {
   if (!file) {
     return res.sendStatus(500);
   }
-
   const baseFolder = path.join(
     __dirname,
     "..",
