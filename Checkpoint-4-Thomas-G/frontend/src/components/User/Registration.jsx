@@ -3,6 +3,8 @@ import "../../styles/index.css";
 import PropTypes from "prop-types";
 import useAPI from "../../api/useAPI";
 import { useAuth } from "../../context/AuthContext";
+import backImg from "../../assets/moto4.jpg";
+import backImg2 from "../../assets/moto3.jpg";
 
 export default function Registration({
   registrationMail,
@@ -12,8 +14,6 @@ export default function Registration({
   mdp,
   setMdp,
   handleSubmit,
-  refPass,
-  refMail,
 }) {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -45,12 +45,7 @@ export default function Registration({
   return success ? (
     <div id="connection">
       <h2>Créez votre compte :</h2>
-      <img
-        src="https://cdn.pixabay.com/photo/2021/07/28/00/57/pyramids-6498038_960_720.jpg"
-        alt=""
-        className="connection-bg"
-      />
-
+      <img src={backImg} alt="" className="connection-bg" />
       <input
         type="text"
         className="user-input"
@@ -83,6 +78,7 @@ export default function Registration({
     </div>
   ) : (
     <div id="connection">
+      <img src={backImg2} alt="" className="connection-bg" />
       <h2> Felicitation! Vous pouvez maintenant vous connecter!</h2>
       <input
         id="username"
@@ -92,7 +88,6 @@ export default function Registration({
         placeholder="Email"
         value={mail}
         onChange={(e) => setMail(e.target.value)}
-        ref={refMail}
       />
       <input
         type="password"
@@ -101,7 +96,6 @@ export default function Registration({
         placeholder="Mot de Passe"
         value={mdp}
         onChange={(e) => setMdp(e.target.value)}
-        ref={refPass}
       />
       <button type="submit" className="user-button" onClick={handleSubmit}>
         Connexion
@@ -118,8 +112,4 @@ Registration.propTypes = {
   mdp: PropTypes.string.isRequired,
   setMdp: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  refPass: PropTypes.shape({ current: PropTypes.instanceOf(Element) })
-    .isRequired,
-  refMail: PropTypes.shape({ current: PropTypes.instanceOf(Element) })
-    .isRequired,
 };

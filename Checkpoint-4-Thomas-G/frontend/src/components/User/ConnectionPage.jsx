@@ -5,6 +5,7 @@ import useAPI from "../../api/useAPI";
 import Registration from "./Registration";
 import { useAuth } from "../../context/AuthContext";
 import userRole from "../../utils/users";
+import backImg from "../../assets/profilDefault2.png";
 
 export default function ConnectionPage() {
   const navigate = useNavigate();
@@ -41,18 +42,10 @@ export default function ConnectionPage() {
 
   return account ? (
     <div id="connection">
-      <img
-        src="https://cdn.pixabay.com/photo/2021/07/28/00/57/pyramids-6498038_960_720.jpg"
-        alt=""
-        className="connection-bg"
-      />
+      <img src={backImg} alt="" className="connection-bg" />
       {success && (
         <div id="connection">
-          <img
-            src="https://cdn.pixabay.com/photo/2021/07/28/00/57/pyramids-6498038_960_720.jpg"
-            alt=""
-            className="connection-bg"
-          />
+          <img src={backImg} alt="" className="connection-bg" />
           <h2>SE CONNECTER</h2>
           <input
             id="username"
