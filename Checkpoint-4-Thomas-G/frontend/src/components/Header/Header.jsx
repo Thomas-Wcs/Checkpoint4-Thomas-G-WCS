@@ -13,7 +13,7 @@ export default function Header() {
   const [allVideos, setAllVideos] = useState();
 
   useEffect(() => {
-    api.get("videos").then((res) => setAllVideos(res.data));
+    api.get("images").then((res) => setAllVideos(res.data));
   }, []);
 
   const filteredVideos = allVideos?.filter((item) =>

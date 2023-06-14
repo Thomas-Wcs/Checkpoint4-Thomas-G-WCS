@@ -44,12 +44,22 @@ export default function DataTable() {
     });
     setData(updatedData);
 
-    const [name, email, firstname] = value;
+    const [name, email, firstname, role, isPremium, isVideoPlus] = value;
+    let newRole = role;
+
+    if (role === "admin") {
+      newRole = "13579AETUO";
+    } else if (role === "user") {
+      newRole = "24680ZRYIP";
+    }
 
     const newUser = {
       name,
       email,
       firstname,
+      role: newRole,
+      isPremium,
+      isVideoPlus,
     };
 
     await api.put(`users/${id}`, newUser);
@@ -102,6 +112,14 @@ export default function DataTable() {
       editable: true,
     },
     {
+      field: "role",
+      headerName: "Role",
+      type: "singleSelect",
+      valueOptions: ["admin", "user"],
+      width: 150,
+      editable: true,
+    },
+    {
       field: "avatar",
       headerName: "Avatar",
       width: 220,
@@ -127,8 +145,13 @@ export default function DataTable() {
           onClick={() => {
             handleCellEditCommit({
               id: params.id,
-              field: ["name", "email", "firstname"],
-              value: [params.row.name, params.row.email, params.row.firstname],
+              field: ["name", "email", "firstname", "role"],
+              value: [
+                params.row.name,
+                params.row.email,
+                params.row.firstname,
+                params.row.role,
+              ],
             });
           }}
         >
@@ -165,11 +188,18 @@ export default function DataTable() {
   ];
 
   const personnels = data.map((personne) => {
+    let { role } = personne;
+    if (personne.role === "24680ZRYIP") {
+      role = "user";
+    } else if (personne.role === "13579AETUO") {
+      role = "admin";
+    }
     return {
       id: personne.id,
       name: personne.name,
       firstname: personne.firstname,
       email: personne.email,
+      role,
       avatar: personne.avatar,
     };
   });
