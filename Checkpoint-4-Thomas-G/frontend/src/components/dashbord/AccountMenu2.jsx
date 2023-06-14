@@ -13,10 +13,10 @@ import Logout from "@mui/icons-material/Logout";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import EditIcon from "@mui/icons-material/Edit";
-import VideoSettingsIcon from "@mui/icons-material/VideoSettings";
 import HomeIcon from "@mui/icons-material/Home";
 import profilImageFirst from "../../assets/profilDefault3.svg.png";
 import dashbordStyles from "./dashbord";
+import logoFront from "../../assets/images.png";
 
 export default function AccountMenu({ userInfo, reset }) {
   const logout = () => {
@@ -140,15 +140,6 @@ export default function AccountMenu({ userInfo, reset }) {
         >
           <HomeIcon sx={{ margin: "5%" }} /> Accueil
         </MenuItem>
-        <MenuItem
-          sx={dashbordStyles}
-          component={Link}
-          state={{ userInfo }}
-          to="/profile/userfavorite"
-          onClick={handleClose}
-        >
-          <VideoSettingsIcon sx={{ margin: "5%" }} /> Mes vidéos
-        </MenuItem>
         <Divider />
         <MenuItem
           sx={dashbordStyles}
@@ -189,6 +180,11 @@ export default function AccountMenu({ userInfo, reset }) {
     </>
   ) : (
     <div className="veuillez-vous-log">
+      <img
+        src={logoFront}
+        alt="logo jaune avec une moto"
+        style={{ width: "300px", height: "300px" }}
+      />
       <p>Veuillez vous connecter</p>
       <Link to="/connexion" style={{ color: "white" }}>
         Connexion

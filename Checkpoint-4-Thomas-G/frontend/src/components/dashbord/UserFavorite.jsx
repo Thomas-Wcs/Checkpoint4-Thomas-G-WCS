@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
-import ReactPlayer from "react-player";
-import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Link } from "react-router-dom";
 import useAPI from "../../api/useAPI";
 import { useAuth } from "../../context/AuthContext";
-import subscribe from "../../assets/Project-1.mp4";
 import "../../styles/index.css";
 
 export default function UserFavorite() {
@@ -18,7 +14,7 @@ export default function UserFavorite() {
 
   const getVideoData = async () => {
     try {
-      await api.get(`videosUser/${userInfo.id}`).then((res) => {
+      await api.get(`images/`).then((res) => {
         setData(res.data);
       });
     } catch (error) {
@@ -38,29 +34,12 @@ export default function UserFavorite() {
     video.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const insertFavoriteVideo = (newValue) => {
-    api
-      .delete(
-        `videosUser/${newValue.videoId}?user=${newValue.userId}`,
-        newValue
-      )
-      .then(() => {
-        getVideoData();
-      });
-  };
-
-  const giveVideoId = (userId, videoId) => {
-    const newValue = { userId, videoId };
-    insertFavoriteVideo(newValue);
-  };
-
   return (
     <div className="main-div-profil-video">
       <div className="title-videos-favorites">
-        <OndemandVideoIcon style={{ fontSize: "100px" }} />
-        <h2>Videos Favorites</h2>
+        <h2>Motos </h2>
         <div className="search-bar-profil">
-          <h4>Chercher une video :</h4>
+          <h4>Chercher une moto :</h4>
           <input
             type="text"
             placeholder="Chercher..."
@@ -74,18 +53,10 @@ export default function UserFavorite() {
           // eslint-disable-next-line react/no-array-index-key
           <div key={index} className="video-wrapper">
             <div className="video-content">
-              <ReactPlayer
-                width="100%"
-                height="75%"
-                style={{ backgroundColor: "black" }}
-                url={
-                  ((!userInfo || userInfo.isPremium === 0) &&
-                    video.isVideoPremium === 1) ||
-                  (userInfo.isVideoPlus === 0 && video.isVideoPaying === 1)
-                    ? subscribe
-                    : `${import.meta.env.VITE_APP_API_URL}${video.link}`
-                }
-                controls
+              <img
+                style={{ width: "100%", height: "70%" }}
+                src={`${import.meta.env.VITE_APP_API_URL}${video.link}`}
+                alt=""
               />
               <div className="favorite-text-and-button">
                 <h4>{video.title}</h4>
@@ -98,13 +69,6 @@ export default function UserFavorite() {
                     <p className="voir-plus-fav-video">voir plus</p>
                   </Link>
                 </div>
-                <button
-                  className="favorite-profil-button"
-                  type="button"
-                  onClick={() => giveVideoId(userInfo.id, video.id)}
-                >
-                  <FavoriteIcon style={{ fontSize: "30px", color: "red" }} />
-                </button>
               </div>
             </div>
           </div>

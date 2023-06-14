@@ -83,8 +83,8 @@ const add = async (req, res) => {
       id: result,
     };
     return res.status(201).json(newVideo);
-  } catch (e) {
-    return res.status(500).send(e.message);
+  } catch (error) {
+    return res.status(500).send(error);
   }
 };
 

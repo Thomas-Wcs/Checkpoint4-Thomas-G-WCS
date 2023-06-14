@@ -65,7 +65,7 @@ function AboutPage() {
           Voici une brève présentation de l'équipe :
         </p>
       </div>
-      {data.slice(0, 4).map((item, index) => (
+      {data.slice(0, 1).map((item, index) => (
         <section
           className="hidden"
           // eslint-disable-next-line react/no-array-index-key
