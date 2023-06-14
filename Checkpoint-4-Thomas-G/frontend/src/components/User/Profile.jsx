@@ -8,7 +8,6 @@ export default function Profile() {
 
   return (
     <div id="profil-display">
-      <h1 className="section-title">Profil</h1>
       <div className="account-menu-display">
         <AccountMenu userInfo={{ ...userInfo, firstname }} reset={reset} />
       </div>

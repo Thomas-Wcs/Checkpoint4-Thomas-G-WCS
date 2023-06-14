@@ -71,12 +71,7 @@ export default function AccountMenu({ userInfo, reset }) {
             />
           </IconButton>
         </Tooltip>
-        <h2
-          className="user-profil-name"
-          style={{ color: "#10bcdd", margin: "1%" }}
-        >
-          {userInfo.name}
-        </h2>
+        <h2>{userInfo.name}</h2>
       </Box>
       <Menu
         anchorEl={anchorEl}

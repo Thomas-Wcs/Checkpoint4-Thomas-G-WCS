@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { DeleteOutline } from "@mui/icons-material";
+import DeleteIcon from "@mui/icons-material/Delete";
 import PostAddRoundedIcon from "@mui/icons-material/PostAddRounded";
 import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid/node";
+import EditIcon from "@mui/icons-material/Edit";
 import useAPI from "../../api/useAPI";
 import dataTableStyle from "./DataTableStyle";
 
@@ -68,14 +69,24 @@ function VideosManagement() {
           <>
             <Link to={`/videos/${params.row.id}`}>
               <button className="sectionEditBtn" type="submit">
-                Edit
+                <EditIcon style={{ width: "100%" }} />
               </button>
             </Link>
-
-            <DeleteOutline
-              className="sectionDeleteBtn"
+            <button
+              type="button"
+              style={{
+                fontFamily: "PT Sans",
+                backgroundColor: "none",
+                height: "90%",
+                margin: "1em",
+                padding: "0.9em",
+                borderRadius: "20%",
+                border: "none",
+              }}
               onClick={() => handleDeleteVideo(params.row.id)}
-            />
+            >
+              <DeleteIcon style={{ width: "100%" }} />
+            </button>
           </>
         );
       },
@@ -98,7 +109,7 @@ function VideosManagement() {
       <h1>Images</h1>
       <Link to="/newVideo">
         <PostAddRoundedIcon
-          style={{ fontSize: 48, color: "#10bcdd" }}
+          style={{ fontSize: 48, color: "yellow" }}
           className="addButton"
         />
       </Link>

@@ -48,21 +48,21 @@ export default function UserFavorite() {
         </div>
       </div>
       <div className="video-grid">
-        {filteredData.map((video, index) => (
+        {filteredData.map((image, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <div key={index} className="video-wrapper">
             <div className="video-content">
               <img
                 style={{ width: "100%", height: "70%" }}
-                src={`${import.meta.env.VITE_APP_API_URL}${video.link}`}
+                src={`${import.meta.env.VITE_APP_API_URL}${image.link}`}
                 alt=""
               />
               <div className="favorite-text-and-button">
-                <h4>{video.title}</h4>
+                <h4>{image.title}</h4>
                 <div>
-                  {`${video.description_text.slice(0, 30)}...`}
+                  {`${image.description_text.slice(0, 30)}...`}
                   <Link
-                    to={`/video_description/${video.id}`}
+                    to={`/video_description/${image.id}`}
                     style={{ textDecoration: "none" }}
                   >
                     <p className="voir-plus-fav-video">voir plus</p>

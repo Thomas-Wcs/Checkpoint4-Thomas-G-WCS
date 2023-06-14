@@ -69,7 +69,7 @@ function VideoUpdate() {
 
   return (
     <div className="sectionUpdate">
-      <h2 className="sectionUpdateTitle">Edition de la video</h2>
+      <h2 className="sectionUpdateTitle">Edition des motos</h2>
       <form className="sectionUpdateForm" onSubmit={handleSubmit}>
         <div className="sectionUpdateId">
           <label htmlFor="id">ID de l'image :</label>

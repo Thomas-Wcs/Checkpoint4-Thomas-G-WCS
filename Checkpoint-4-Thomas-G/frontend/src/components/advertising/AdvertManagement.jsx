@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid/node";
-
 import { Box } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import moment from "moment";
@@ -83,7 +82,7 @@ function AdvertManagement() {
           type="button"
           style={{
             fontFamily: "PT Sans",
-            backgroundColor: "red",
+            backgroundColor: "none",
             height: "90%",
             margin: "1em",
             padding: "0.9em",
@@ -107,10 +106,10 @@ function AdvertManagement() {
   });
   return (
     <div>
-      <h1>Publicités</h1>
+      <h1>Articles / Pub</h1>
       <Link to="/advertManagementWindow">
         <PostAddRoundedIcon
-          style={{ fontSize: 48, color: "#10bcdd" }}
+          style={{ fontSize: 48, color: "yellow" }}
           className="addButton"
         />
       </Link>

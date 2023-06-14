@@ -7,6 +7,7 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
 body {
   background-color: black;
+  font-family: "PT Sans", sans-serif;
 }
 body .logo-front-moto {
   width: 100px;
@@ -54,8 +55,8 @@ body h1 {
 #nav-body .navbar .menu-items .user-button {
   margin-top: 70px;
   background: none;
-  border: 1px solid #10bcdd;
-  color: #10bcdd;
+  border: 1px solid #ffff27;
+  color: #ffff27;
   width: 10%;
   height: 50px;
   z-index: 10;
@@ -65,7 +66,7 @@ body h1 {
 #nav-body .navbar .menu-items .user-button:hover {
   cursor: pointer;
   z-index: 10;
-  background: #10bcdd;
+  background: #ffff27;
   color: #000000;
 }
 @media screen and (max-width: 760px) {
@@ -93,8 +94,8 @@ body h1 {
 }
 #nav-body .navbar .menu-items li a .user-button {
   background: none;
-  border: 1px solid #10bcdd;
-  color: #10bcdd;
+  border: 1px solid #ffff27;
+  color: #ffff27;
   width: 15%;
   height: 50px;
   z-index: 10;
@@ -103,7 +104,7 @@ body h1 {
 #nav-body .navbar .menu-items li a .user-button:hover {
   cursor: pointer;
   z-index: 10;
-  background: #10bcdd;
+  background: #ffff27;
   color: #000000;
 }
 @media screen and (max-width: 760px) {
@@ -399,8 +400,8 @@ body h1 {
 }
 #connection .user-button {
   background: none;
-  border: 1px solid #10bcdd;
-  color: #10bcdd;
+  border: 1px solid #ffff27;
+  color: #ffff27;
   width: 15%;
   height: 50px;
   z-index: 10;
@@ -409,7 +410,7 @@ body h1 {
 #connection .user-button:hover {
   cursor: pointer;
   z-index: 10;
-  background: #10bcdd;
+  background: #ffff27;
   color: #000000;
 }
 @media screen and (max-width: 760px) {
@@ -430,7 +431,7 @@ body h1 {
   padding-top: 6%;
 }
 #profil-display .section-title {
-  color: #10bcdd;
+  color: #ffff27;
   margin: 3%;
   text-align: center;
 }
@@ -442,7 +443,7 @@ body h1 {
 }
 .admin-pannel h1 {
   display: flex;
-  color: #10bcdd;
+  color: #ffff27;
   justify-content: center;
   padding: 2%;
 }
@@ -476,7 +477,7 @@ body h1 {
 }
 .display-nav-admin2 ul li a {
   text-decoration: none;
-  color: #10bcdd;
+  color: #ffff27;
   transition: 0.3s ease-in-out;
   border: solid 2px;
   border-radius: 5%;
@@ -494,7 +495,7 @@ body h1 {
   width: 100%;
   flex-direction: column;
   align-items: left;
-  color: #10bcdd;
+  color: #ffff27;
   justify-content: center;
   padding: 2%;
   font-family: "PT Sans";
@@ -507,9 +508,9 @@ body h1 {
   width: 150px;
   margin: 1em 0 1em 0;
   padding: 0.5em;
-  color: #10bcdd;
+  color: #ffff27;
   background-color: black;
-  border-color: #10bcdd;
+  border-color: #ffff27;
   align-items: end;
   overflow: hidden;
   border-radius: 5%;
@@ -551,7 +552,7 @@ body h1 {
 }
 .admin-videos button {
   text-decoration: none;
-  color: #10bcdd;
+  color: #ffff27;
   transition: 0.3s ease-in-out;
   border: solid 2px;
   border-radius: 5%;
@@ -587,7 +588,7 @@ body h1 {
   align-items: center;
   width: auto;
   height: auto;
-  color: #10bcdd;
+  color: #ffff27;
 }
 .veuillez-vous-log p {
   color: aliceblue;
@@ -600,16 +601,16 @@ body h1 {
   height: auto;
   width: auto;
   margin: 2%;
-  color: #10bcdd;
+  color: #ffff27;
 }
 .user-main-profile h3 {
-  color: #10bcdd;
+  color: #ffff27;
   font-family: "PT Sans";
   margin: auto;
   margin-bottom: 10%;
 }
 .user-main-profile h4 {
-  color: #10bcdd;
+  color: #ffff27;
   font-family: "PT Sans";
   margin: auto;
 }
@@ -648,7 +649,7 @@ body h1 {
 }
 .user-main-profile .valide-mdp-button {
   font-family: "PT Sans";
-  color: #10bcdd;
+  color: #ffff27;
   transition: 0.3s ease-in-out;
   border: solid 2px;
   border-radius: 5%;
@@ -702,7 +703,6 @@ body h1 {
 }
 .video-grid .video-wrapper:hover {
   transform: scale(1.05);
-  border: 4px solid #10bcdd;
   border-radius: 5px;
   box-shadow: 0 0 80px rgba(244, 251, 255, 0.5);
   z-index: 3;
@@ -726,8 +726,6 @@ body h1 {
   padding: 2%;
   margin-left: 2%;
   border-radius: 15px;
-  border: 4px outset #10bcdd;
-  outline-color: #10bcdd;
 }
 
 .main-div-profil-video {
@@ -766,7 +764,7 @@ body h1 {
 }
 
 .voir-plus-fav-video {
-  color: #10bcdd;
+  color: #ffff27;
 }
 
 @media screen and (max-width: 1200px) {
@@ -824,4 +822,144 @@ body h1 {
 }
 .footer_container .footer_link {
   color: #10bcdd;
+}
+
+.sectionUpdate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "PT Sans";
+}
+.sectionUpdate .sectionUpdateTitle {
+  text-align: center;
+  color: #ffff27;
+  margin-top: 100px;
+  font-size: 32px;
+}
+.sectionUpdate .sectionUpdateForm {
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #808080;
+  width: 28%;
+  height: auto;
+  border-radius: 16px;
+  margin-bottom: 5%;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.sectionUpdate .sectionUpdateForm .section-checkboxes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 15px;
+  justify-content: space-around;
+}
+.sectionUpdate .sectionUpdateForm .section-checkboxes .section-update-checkbox {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+.sectionUpdate .sectionUpdateForm .section-checkboxes .section-update-checkbox label {
+  margin: 0 5px;
+  font-size: 14px;
+  color: #333;
+}
+.sectionUpdate .sectionUpdateForm #video-paying {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 15px;
+  justify-content: space-around;
+}
+.sectionUpdate label {
+  display: block;
+  margin: 5% 0 4% 0;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #333;
+}
+.sectionUpdate input {
+  width: 100%;
+  padding: 3%;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s ease-in-out;
+}
+.sectionUpdate input:focus {
+  border-color: green;
+}
+.sectionUpdate .sectionUpdateName,
+.sectionUpdate .sectionUpdateOrder {
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  max-width: 63%;
+}
+.sectionUpdate select {
+  height: 30px;
+  width: 100%;
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s ease-in-out;
+}
+.sectionUpdate select:focus {
+  border-color: green;
+}
+.sectionUpdate .sectionUpdateButton {
+  width: 100px;
+  height: 30px;
+  border: none;
+  margin-top: 20px;
+  background-color: green;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  outline: none;
+  transition: background-color 0.3s ease-in-out;
+}
+.sectionUpdate .sectionUpdateButton:hover {
+  background-color: green;
+}
+
+.css-204u17-MuiDataGrid-main {
+  color: white;
+}
+
+.css-i16b5t {
+  max-width: 100%;
+  display: flex;
+}
+
+.addButton {
+  cursor: pointer;
+  margin: auto 150px;
+  text-align: right;
+  float: right;
+  margin-bottom: 20px;
+}
+
+.sectionEditBtn {
+  background-color: green;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin-right: 20px;
+}
+
+.sectionDeleteBtn {
+  color: red;
+  cursor: pointer;
 }/*# sourceMappingURL=index.css.map */
