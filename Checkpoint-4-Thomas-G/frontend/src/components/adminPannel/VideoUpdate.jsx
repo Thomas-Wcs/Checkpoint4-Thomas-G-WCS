@@ -8,14 +8,14 @@ function VideoUpdate() {
   const api = useAPI();
   const navigate = useNavigate();
   const [allCategory, setCategory] = useState([]);
-  const [videoData, setVideoData] = useState();
-  const [newvideoData, setNewVideoData] = useState();
-  console.log(newvideoData);
+  const [newImageData, setNewImageData] = useState();
+  // eslint-disable-next-line no-restricted-syntax
+  console.log(newImageData);
 
   useEffect(() => {
     const getVideoData = async () => {
       await api.get(`images/${id}`).then((res) => {
-        setVideoData(res.data);
+        setNewImageData(res.data);
       });
     };
     getVideoData();
@@ -25,22 +25,37 @@ function VideoUpdate() {
     api.get("/category").then((res) => setCategory(res.data));
   }, [id]);
 
-  function handleChange(e) {
-    const { values } = e.target;
-    let newValue;
-    setNewVideoData((prevState) => ({
+  function handleChangeTitle(e) {
+    const values = e.target.value;
+    setNewImageData((prevState) => ({
       ...prevState,
-      [values]: newValue,
+      title: values,
+    }));
+  }
+
+  function handleChangeDescription(e) {
+    const values = e.target.value;
+    setNewImageData((prevState) => ({
+      ...prevState,
+      description_text: values,
+    }));
+  }
+
+  function handleChangeCategory(e) {
+    const values = e.target.value;
+    setNewImageData((prevState) => ({
+      ...prevState,
+      category_id: values,
     }));
   }
 
   function multiUpdate() {
     api
-      .put(`images/${videoData.id}`, {
-        title: videoData.title,
-        description_text: videoData.description_text,
-        link: videoData.link,
-        category_id: videoData.category_id,
+      .put(`images/${newImageData.id}`, {
+        title: newImageData.title,
+        description_text: newImageData.description_text,
+        link: newImageData.link,
+        category_id: newImageData.category_id,
       })
       .then(() => {
         navigate("/adminPanel/videosTable");
@@ -64,9 +79,8 @@ function VideoUpdate() {
           <input
             type="text"
             placeholder="id"
-            value={videoData?.id}
+            value={newImageData?.id}
             className="sectionUpdateInput"
-            onChange={handleChange}
             name="id"
             disabled
           />
@@ -77,8 +91,8 @@ function VideoUpdate() {
             type="text"
             placeholder="Titre de la video"
             className="sectionUpdateInput"
-            value={videoData?.title}
-            onChange={handleChange}
+            value={newImageData?.title}
+            onChange={handleChangeTitle}
             name="title"
           />
         </div>
@@ -88,8 +102,8 @@ function VideoUpdate() {
             type="text"
             placeholder="Description"
             className="sectionUpdateInput"
-            value={videoData?.description_text}
-            onChange={handleChange}
+            value={newImageData?.description_text}
+            onChange={handleChangeDescription}
             name="description_text"
           />
         </div>
@@ -98,8 +112,8 @@ function VideoUpdate() {
           {allCategory && (
             <select
               name="category_id"
-              value={videoData?.category_id}
-              onChange={handleChange}
+              value={newImageData?.category_id}
+              onChange={handleChangeCategory}
               className="selecter"
             >
               {allCategory.map((cat, index) => (
