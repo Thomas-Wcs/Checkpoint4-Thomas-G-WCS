@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 import useAPI from "../../api/useAPI";
 import { useAuth } from "../../context/AuthContext";
 import backImg from "../../assets/moto4.jpg";
@@ -14,6 +15,7 @@ export default function Registration({
   setMdp,
   handleSubmit,
 }) {
+  const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const { success, setSuccess } = useAuth();
@@ -35,8 +37,7 @@ export default function Registration({
             .post("nodeMailer/sendWelcome", newUser)
             .then((response) => {
               if (response.status === 200) {
-                // eslint-disable-next-line no-restricted-syntax
-                console.log("toto");
+                navigate("/");
               }
             })
             .catch((err) => console.error(err));
