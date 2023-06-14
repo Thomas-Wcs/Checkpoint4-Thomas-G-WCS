@@ -50,7 +50,13 @@ function welcomeMessage(req, res) {
       to: email, // utilisé comme adresse RCPT TO: pour SMTP
     },
     subject: "Contact Client",
-    text: `Merci pour votre inscription ${name}, avec les identifiants suivant : ${email} "`,
+    text: `Merci pour votre inscription : ${name} ! Bienvenue sur Moto'API ! Préparez-vous à vivre une expérience moto sensationnelle.
+     Plongez dans un univers captivant rempli de photos de motos à couper le souffle. Que vous soyez un passionné de deux-roues ou simplement curieux, vous trouverez ici votre dose d'adrénaline. Explorez notre galerie diversifiée, découvrez des modèles emblématiques et laissez-vous inspirer par la beauté et la puissance des motos. 
+     
+     N'hesitez pas à poster une photo de votre belle pour la partager à la communautée ! Accrochez-vous bien et profitez de chaque instant sur Moto'API ! "
+     
+     Salutations motardes !, 
+     `,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
