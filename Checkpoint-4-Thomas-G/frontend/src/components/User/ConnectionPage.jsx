@@ -15,7 +15,6 @@ export default function ConnectionPage() {
   const [account, setAccount] = useState(true);
   const [errorMessage, setErrorMessage] = useState(false);
   const { success, setSuccess, setIsAdmin, setUserInfo } = useAuth();
-  console.log(mdp, mail);
 
   const handleSubmit = (e) => {
     e.preventDefault();

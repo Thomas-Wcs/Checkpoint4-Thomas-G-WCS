@@ -36,7 +36,7 @@ export default function Registration({
             .then((response) => {
               if (response.status === 200) {
                 // eslint-disable-next-line no-restricted-syntax
-                console.log("toto");
+                console.log("Un mail viens de vous etre envoyé :)");
               }
             })
             .catch((err) => console.error(err));
