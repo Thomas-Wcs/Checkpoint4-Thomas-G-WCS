@@ -15,7 +15,6 @@ function VideoAdd() {
   const [allCategories, setAllCategories] = useState([]);
   const [doneAdd, setDoneAdd] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
-  console.log(errorMessage);
 
   const api = useAPI();
 
