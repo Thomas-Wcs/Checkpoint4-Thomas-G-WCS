@@ -14,7 +14,6 @@ import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import EditIcon from "@mui/icons-material/Edit";
 import VideoSettingsIcon from "@mui/icons-material/VideoSettings";
-import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import HomeIcon from "@mui/icons-material/Home";
 import dashbordStyles from "./dashbord";
 import profilImageFirst from "../../assets/profilDefault3.svg.png";
@@ -162,18 +161,6 @@ export default function AccountMenu({ userInfo, reset }) {
             <EditIcon fontSize="small" />
           </ListItemIcon>
           Editer Profil
-        </MenuItem>
-        <MenuItem
-          sx={dashbordStyles}
-          component={Link}
-          state={{ userInfo }}
-          to="/profile/aboedit"
-          onClick={handleClose}
-        >
-          <ListItemIcon>
-            <AdminPanelSettingsIcon fontSize="small" />
-          </ListItemIcon>
-          Abonnement
         </MenuItem>
         <MenuItem sx={dashbordStyles} onClick={handleClose}>
           <ListItemIcon>
