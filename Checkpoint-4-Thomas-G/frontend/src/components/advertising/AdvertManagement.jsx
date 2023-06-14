@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
 import dataTableStyle from "../adminPannel/DataTableStyle";
 import useAPI from "../../api/useAPI";
-import "../../styles/index.css";
 
 function AdvertManagement() {
   const api = useAPI();

@@ -5,7 +5,6 @@ import PostAddRoundedIcon from "@mui/icons-material/PostAddRounded";
 import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid/node";
 import useAPI from "../../api/useAPI";
-import "../../styles/index.css";
 import dataTableStyle from "./DataTableStyle";
 
 function VideosManagement() {

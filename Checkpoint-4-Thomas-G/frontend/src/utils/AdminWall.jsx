@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useAuth } from "../context/AuthContext";
-import "../styles/index.css";
+import "../scss/index.css";
 
 export default function AdminWall({ children }) {
   const { isAdmin } = useAuth();

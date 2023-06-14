@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAPI from "../../api/useAPI";
 import { useAuth } from "../../context/AuthContext";
-import "../../styles/index.css";
+import "../../scss/index.css";
 
 export default function UserFavorite() {
   const { userInfo } = useAuth();
@@ -37,7 +37,6 @@ export default function UserFavorite() {
   return (
     <div className="main-div-profil-video">
       <div className="title-videos-favorites">
-        <h2>Motos </h2>
         <div className="search-bar-profil">
           <h4>Chercher une moto :</h4>
           <input

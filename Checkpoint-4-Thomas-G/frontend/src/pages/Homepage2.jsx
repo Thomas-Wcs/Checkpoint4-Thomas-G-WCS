@@ -2,7 +2,7 @@ import UserFavorite from "../components/dashbord/UserFavorite";
 import AccountMenu2 from "../components/dashbord/AccountMenu2";
 import { useAuth } from "../context/AuthContext";
 import logoFront from "../assets/images.png";
-import "../styles/index.css";
+import "../scss/index.css";
 
 function Homepage2() {
   const { userInfo, reset } = useAuth();
@@ -12,7 +12,6 @@ function Homepage2() {
     <div style={{ paddingTop: "200px" }}>
       <img
         className="logo-front-moto"
-        // style={{ width: "100px", height: "100px", margin: "50px" }}
         src={logoFront}
         alt="logo jaune avec une moto"
       />
@@ -28,9 +27,9 @@ function Homepage2() {
         </div>
       ) : (
         <div>
-          {" "}
+          <p style={{ color: "white" }}>CONNEXION - INSCRIPTION</p>
           <div>
-            <AccountMenu2 userInfo={{ ...userInfo, firstname }} reset={reset} />
+            <UserFavorite />
           </div>{" "}
         </div>
       )}

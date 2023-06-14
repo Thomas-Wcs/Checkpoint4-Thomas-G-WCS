@@ -17,6 +17,7 @@ import VideoUpdate from "./components/adminPannel/VideoUpdate";
 import VideoAdd from "./components/adminPannel/VideoAdd";
 import AdminWall from "./utils/AdminWall";
 import AdvertAdd from "./components/advertising/AdvertAdd";
+import "./scss/index.css";
 
 function App() {
   return (

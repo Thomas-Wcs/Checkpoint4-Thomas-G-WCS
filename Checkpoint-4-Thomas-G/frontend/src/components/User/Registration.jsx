@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "../../styles/index.css";
 import PropTypes from "prop-types";
 import useAPI from "../../api/useAPI";
 import { useAuth } from "../../context/AuthContext";

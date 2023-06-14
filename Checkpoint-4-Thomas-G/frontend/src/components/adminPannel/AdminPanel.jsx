@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import "../../styles/index.css";
 import { useAuth } from "../../context/AuthContext";
 import useAPI from "../../api/useAPI";
 import AccountMenu2 from "../dashbord/AccountMenu2";

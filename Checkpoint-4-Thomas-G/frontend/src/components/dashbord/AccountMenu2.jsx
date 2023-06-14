@@ -181,9 +181,9 @@ export default function AccountMenu({ userInfo, reset }) {
   ) : (
     <div className="veuillez-vous-log">
       <img
+        className="logo-front-moto"
         src={logoFront}
         alt="logo jaune avec une moto"
-        style={{ width: "300px", height: "300px" }}
       />
       <p>Veuillez vous connecter</p>
       <Link to="/connexion" style={{ color: "white" }}>
