@@ -2,10 +2,31 @@ body {
   background-color: black;
   font-family: "PT Sans", sans-serif;
 
+  .main-homepage-conteneur {
+    padding-top: 90px;
+  }
+  .conteneur-image-logo-home {
+    background-color: yellow;
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 80px;
+  }
+
   .logo-front-moto {
     width: 100px;
     height: 100px;
     margin: 50px;
+  }
+  .logo-vintage-moto {
+    width: 200px;
+    height: 180px;
+    margin: 10px;
+  }
+  .moto-api-title {
+    font-size: 50px;
+    font-style: italic;
   }
 
   h1 {

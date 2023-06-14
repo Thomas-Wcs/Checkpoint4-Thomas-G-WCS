@@ -9,10 +9,30 @@ body {
   background-color: black;
   font-family: "PT Sans", sans-serif;
 }
+body .main-homepage-conteneur {
+  padding-top: 90px;
+}
+body .conteneur-image-logo-home {
+  background-color: yellow;
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 80px;
+}
 body .logo-front-moto {
   width: 100px;
   height: 100px;
   margin: 50px;
+}
+body .logo-vintage-moto {
+  width: 200px;
+  height: 180px;
+  margin: 10px;
+}
+body .moto-api-title {
+  font-size: 50px;
+  font-style: italic;
 }
 body h1 {
   color: white;

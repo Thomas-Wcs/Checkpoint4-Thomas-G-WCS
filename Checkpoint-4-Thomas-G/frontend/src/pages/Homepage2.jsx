@@ -2,6 +2,7 @@ import UserFavorite from "../components/dashbord/UserFavorite";
 import AccountMenu2 from "../components/dashbord/AccountMenu2";
 import { useAuth } from "../context/AuthContext";
 import logoFront from "../assets/images.png";
+import logoVintage from "../assets/motorcycle1.png";
 import "../scss/index.css";
 
 function Homepage2() {
@@ -9,12 +10,24 @@ function Homepage2() {
   const firstname = userInfo?.firstname || "";
 
   return (
-    <div style={{ paddingTop: "200px" }}>
-      <img
-        className="logo-front-moto"
-        src={logoFront}
-        alt="logo jaune avec une moto"
-      />
+    <div className="main-homepage-conteneur">
+      <div
+        className="conteneur-image-logo-home
+      "
+      >
+        <img
+          className="logo-front-moto"
+          src={logoFront}
+          alt="logo jaune avec une moto"
+        />
+        <h2 className="moto-api-title">Moto'API</h2>
+        <img
+          className="logo-vintage-moto"
+          src={logoVintage}
+          alt="logo jaune avec une moto"
+        />
+      </div>
+
       {userInfo.email ? (
         <div>
           {" "}
