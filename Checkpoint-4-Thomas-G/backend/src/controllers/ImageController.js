@@ -46,6 +46,9 @@ const add = async (req, res) => {
   const { title, description_text, category_id, date_publication } = req.body;
   const { file } = req;
   if (!file) {
+    console.error(
+      "Le fichier a upload dans les images pour la moto est manquant. Veuillez en ajouter un svp"
+    );
     return res.sendStatus(500);
   }
   const baseFolder = path.join(

@@ -13,6 +13,9 @@ function VideoAdd() {
   const [videosChanging, setVideosChanging] = useState(true);
   const [newCategorie, setNewCategorie] = useState({ name: "", id: "" });
   const [allCategories, setAllCategories] = useState([]);
+  const [doneAdd, setDoneAdd] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
+  console.log(errorMessage);
 
   const api = useAPI();
 
@@ -33,12 +36,18 @@ function VideoAdd() {
     api
       .post("/images", formData)
       .then((response) => {
-        // eslint-disable-next-line no-restricted-syntax
-        console.log(response);
-        setVideosChanging(!videosChanging);
+        if (response === 201) {
+          setDoneAdd(true);
+          setVideosChanging(!videosChanging);
+        }
       })
-      .catch((err) => console.error(err));
-    navigate("/adminPanel/videosTable");
+      .catch((err) => {
+        setErrorMessage(true);
+        console.error(err);
+      });
+    setTimeout(() => {
+      navigate("/adminPanel/videosTable");
+    }, 2000);
   };
 
   function handleChange(e) {
@@ -136,6 +145,19 @@ function VideoAdd() {
         >
           Ajouter
         </button>
+        <div>
+          {" "}
+          {doneAdd ? (
+            <div style={{ color: "green" }}>
+              L'image a été ajouté avec succées
+            </div>
+          ) : undefined}
+          {errorMessage ? (
+            <div style={{ color: "red" }}>
+              Une erreur à eu lieu. Veuillez remplir tous les champs !
+            </div>
+          ) : undefined}
+        </div>
       </div>
     </div>
   );
