@@ -29,13 +29,13 @@ pool.getConnection().catch(() => {
 
 const models = {};
 
-const VideoManager = require("./VideoManager");
+const ImagesManager = require("./ImagesManager");
 const UserManager = require("./UserManager");
 const CategorieManager = require("./CategorieManager");
 const AdvertsManager = require("./AdvertsManager");
 
-models.video = new VideoManager();
-models.video.setDatabase(pool);
+models.images = new ImagesManager();
+models.images.setDatabase(pool);
 
 models.user = new UserManager();
 models.user.setDatabase(pool);

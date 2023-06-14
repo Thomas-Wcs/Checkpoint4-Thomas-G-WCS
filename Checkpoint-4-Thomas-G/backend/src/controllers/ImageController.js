@@ -4,7 +4,7 @@ const fs = require("fs");
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.video
+  models.images
     .findAll()
     .then(([rows]) => {
       res.send(rows);
@@ -15,20 +15,8 @@ const browse = (req, res) => {
     });
 };
 
-const findAllVideoForAdmin = (req, res) => {
-  models.video
-    .findReallyAll()
-    .then(([rows]) => {
-      res.send(rows);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-
 const read = (req, res) => {
-  models.video
+  models.images
     .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
@@ -43,17 +31,8 @@ const read = (req, res) => {
     });
 };
 
-const readAll = (req, res) => {
-  models.video
-    .findAllFromEverything()
-    .then(([rows]) => res.send(rows))
-    .catch((err) => {
-      console.error(err);
-    });
-};
-
 const edit = async (req, res) => {
-  const result = await models.video.update(
+  const result = await models.images.update(
     parseInt(req.params.id, 10),
     req.body
   );
@@ -76,7 +55,7 @@ const add = async (req, res) => {
     "..",
     "public",
     "assets",
-    "videos"
+    "images"
   );
   const originalName = path.join(baseFolder, file.originalname);
   const filename = path.join(baseFolder, file.filename);
@@ -84,11 +63,11 @@ const add = async (req, res) => {
   fs.rename(filename, originalName, (err) => {
     if (err) res.status(500);
   });
-  const link = `assets/videos/${file.originalname}`;
+  const link = `assets/images/${file.originalname}`;
 
   // TODO validations (length, format...)
   try {
-    const result = await models.video.insert({
+    const result = await models.images.insert({
       title,
       link,
       category_id,
@@ -111,7 +90,7 @@ const add = async (req, res) => {
 };
 
 const destroy = async (req, res) => {
-  await models.video
+  await models.images
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
@@ -126,41 +105,10 @@ const destroy = async (req, res) => {
     });
 };
 
-const findAllVideoAndFavorite = (req, res) => {
-  const userId = req.params.id;
-  const sectionID = req.params.sectionId;
-  models.video
-    .findFavorites({ userId, sectionID })
-    .then(([result]) => {
-      res.json(result);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-
-const findAllVideoAndFavoriteWithoutSecID = (req, res) => {
-  const userId = req.params.id;
-  models.video
-    .findFavoritesWithoutSectionId({ userId })
-    .then(([result]) => {
-      res.json(result);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-
 module.exports = {
   browse,
   read,
   edit,
   add,
   destroy,
-  findAllVideoAndFavorite,
-  readAll,
-  findAllVideoForAdmin,
-  findAllVideoAndFavoriteWithoutSecID,
 };
