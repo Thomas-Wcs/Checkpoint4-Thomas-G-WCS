@@ -34,6 +34,7 @@ function VideoAdd() {
     api
       .post("/images", formData)
       .then((response) => {
+        // eslint-disable-next-line no-restricted-syntax
         console.log(response);
         setVideosChanging(!videosChanging);
       })
