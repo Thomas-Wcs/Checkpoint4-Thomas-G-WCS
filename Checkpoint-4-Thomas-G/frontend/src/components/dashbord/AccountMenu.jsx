@@ -13,7 +13,6 @@ import Logout from "@mui/icons-material/Logout";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import EditIcon from "@mui/icons-material/Edit";
-import VideoSettingsIcon from "@mui/icons-material/VideoSettings";
 import HomeIcon from "@mui/icons-material/Home";
 import dashbordStyles from "./dashbord";
 import profilImageFirst from "../../assets/profilDefault3.svg.png";
@@ -134,15 +133,6 @@ export default function AccountMenu({ userInfo, reset }) {
           onClick={handleClose}
         >
           <HomeIcon sx={{ margin: "5%" }} /> Accueil
-        </MenuItem>
-        <MenuItem
-          sx={dashbordStyles}
-          component={Link}
-          state={{ userInfo }}
-          to="/profile/userfavorite"
-          onClick={handleClose}
-        >
-          <VideoSettingsIcon sx={{ margin: "5%" }} /> Mes Videos
         </MenuItem>
         <Divider />
         <MenuItem

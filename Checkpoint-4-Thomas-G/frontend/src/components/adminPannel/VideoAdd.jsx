@@ -35,7 +35,7 @@ function VideoAdd() {
     api
       .post("/images", formData)
       .then((response) => {
-        if (response === 201) {
+        if (response.status === 201) {
           setDoneAdd(true);
           setVideosChanging(!videosChanging);
         }
@@ -147,12 +147,12 @@ function VideoAdd() {
         <div>
           {" "}
           {doneAdd ? (
-            <div style={{ color: "green" }}>
+            <div style={{ color: "green", margin: "10px" }}>
               L'image a été ajouté avec succées
             </div>
           ) : undefined}
           {errorMessage ? (
-            <div style={{ color: "red" }}>
+            <div style={{ color: "red", margin: "10px" }}>
               Une erreur à eu lieu. Veuillez remplir tous les champs !
             </div>
           ) : undefined}

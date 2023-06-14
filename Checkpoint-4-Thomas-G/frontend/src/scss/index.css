@@ -579,6 +579,7 @@ body h1 {
   margin: 1%;
   height: auto;
   width: auto;
+  background-image: url(../assets//banderoleJaune.png);
 }
 
 .veuillez-vous-log {
@@ -601,6 +602,9 @@ body h1 {
   height: auto;
   width: auto;
   margin: 2%;
+  background-image: url(../assets/moto4.jpg);
+  background-size: cover;
+  background-position: center;
   color: #ffff27;
 }
 .user-main-profile h3 {
