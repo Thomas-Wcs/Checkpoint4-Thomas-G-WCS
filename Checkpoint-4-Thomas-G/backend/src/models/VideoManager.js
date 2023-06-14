@@ -2,7 +2,7 @@ const AbstractManager = require("./AbstractManager");
 
 class VideoManager extends AbstractManager {
   constructor() {
-    super({ table: "videos" });
+    super({ table: "images" });
   }
 
   findReallyAll() {

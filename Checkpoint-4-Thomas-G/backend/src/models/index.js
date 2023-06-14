@@ -31,9 +31,8 @@ const models = {};
 
 const VideoManager = require("./VideoManager");
 const UserManager = require("./UserManager");
-const SectionManager = require("./SectionManager");
 const CategorieManager = require("./CategorieManager");
-const VideoSectionManager = require("./VideoSectionManager");
+const AdvertsManager = require("./AdvertsManager");
 
 models.video = new VideoManager();
 models.video.setDatabase(pool);
@@ -41,23 +40,11 @@ models.video.setDatabase(pool);
 models.user = new UserManager();
 models.user.setDatabase(pool);
 
-models.section = new SectionManager();
-models.section.setDatabase(pool);
-
 models.categorie = new CategorieManager();
 models.categorie.setDatabase(pool);
 
-models.videoSection = new VideoSectionManager();
-models.videoSection.setDatabase(pool);
-const AdvertsManager = require("./AdvertsManager");
-
 models.adverts = new AdvertsManager();
 models.adverts.setDatabase(pool);
-
-const VideosUserManager = require("./Videos_userManager");
-
-models.videos_user = new VideosUserManager();
-models.videos_user.setDatabase(pool);
 
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
