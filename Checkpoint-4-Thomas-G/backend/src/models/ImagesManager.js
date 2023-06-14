@@ -15,7 +15,7 @@ class VideoManager extends AbstractManager {
 
   find(id) {
     return this.database.query(
-      `SELECT images.*, categorie.name
+      `SELECT images.*, categorie.name AS categorie_name
       FROM images
       INNER JOIN categorie ON images.category_id = categorie.id
       where ${this.table}.id = ?`,
@@ -23,19 +23,11 @@ class VideoManager extends AbstractManager {
     );
   }
 
-  insert(videos) {
+  insert(images) {
     return this.database
       .query(
-        `insert into ${this.table} (title, link, category_id, description_text, date_publication, isVideoPremium, isVideoPaying) values (?, ?, ?, ?, ?, ?, ?)`,
-        [
-          videos.title,
-          videos.link,
-          videos.category_id,
-          videos.description_text,
-          videos.date_publication,
-          videos.isVideoPremium,
-          videos.isVideoPaying,
-        ]
+        `insert into ${this.table} (title, link, category_id, description_text) values (?, ?, ?, ?)`,
+        [images.title, images.link, images.category_id, images.description_text]
       )
       .then((res) => {
         return res;
@@ -56,12 +48,8 @@ class VideoManager extends AbstractManager {
 
   delete(id) {
     return this.database
-      .query("delete from video_section where video_id= ?", [id])
-      .then(() => {
-        return this.database.query(`delete from ${this.table} where id = ?`, [
-          id,
-        ]);
-      });
+      .query(`delete from ${this.table} where id= ?`, [id])
+      .then(([response]) => response);
   }
 }
 

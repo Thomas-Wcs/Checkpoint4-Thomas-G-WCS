@@ -14,8 +14,6 @@ function VideoAdd() {
   const [videosChanging, setVideosChanging] = useState(true);
   const [newCategorie, setNewCategorie] = useState({ name: "", id: "" });
   const [allCategories, setAllCategories] = useState([]);
-  const [videoPaying, setVideoPaying] = useState(0);
-  const [videoPremium, setVideoPremium] = useState(0);
 
   const api = useAPI();
 
@@ -32,12 +30,9 @@ function VideoAdd() {
     formData.append("description_text", description);
     formData.append("category_id", categorie);
     formData.append("link", fileUpload);
-    formData.append("date_publication", Date());
-    formData.append("isVideoPaying", videoPaying);
-    formData.append("isVideoPremium", videoPremium);
 
     api
-      .post("/videos", formData)
+      .post("/images", formData)
 
       .then(() => {
         setVideosChanging(!videosChanging);
@@ -74,7 +69,6 @@ function VideoAdd() {
   return (
     <div className="sectionUpdate">
       <h2 className="sectionUpdateTitle">Page de video</h2>
-
       <div className="sectionUpdateForm">
         <div className="sectionUpdateName">
           <label htmlFor="title">Titre de la vidéo :</label>
@@ -125,27 +119,6 @@ function VideoAdd() {
               {" "}
               Ajouter
             </button>
-
-            <div id="video-paying">
-              <label htmlFor="videoPaying">Video Payante?</label>
-              <input
-                name="videoPaying"
-                type="checkbox"
-                checked={videoPaying === 1}
-                onChange={() =>
-                  videoPaying === 0 ? setVideoPaying(1) : setVideoPaying(0)
-                }
-              />
-              <label htmlFor="videoPremium">Video Premium?</label>
-              <input
-                name="videoPremium"
-                type="checkbox"
-                checked={videoPremium === 1}
-                onChange={() =>
-                  videoPremium === 0 ? setVideoPremium(1) : setVideoPremium(0)
-                }
-              />
-            </div>
           </form>
         </div>
         <label htmlFor="link">

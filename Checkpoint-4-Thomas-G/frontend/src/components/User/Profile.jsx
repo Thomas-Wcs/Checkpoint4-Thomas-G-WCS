@@ -12,7 +12,7 @@ export default function Profile() {
       <img
         src="/src/assets/images.png"
         alt="logo du site"
-        style={{ width: " 300px", height: "100px" }}
+        style={{ width: " 300px", height: "300px" }}
       />
       <h1 className="section-title">Profil</h1>
       <div className="account-menu-display">

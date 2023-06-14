@@ -69,7 +69,6 @@ function Videos({ videos, onDeleteVideo }) {
             <>
               <h2 className="video-text">{videos.description_text} </h2>
               <button type="button" onClick={handleModifyDesc}>
-                {" "}
                 Modifier la description
               </button>
             </>
@@ -92,7 +91,6 @@ function Videos({ videos, onDeleteVideo }) {
               />
             </label>
             <button type="button" onClick={handleEdit}>
-              {" "}
               Modifier
             </button>
           </>
@@ -105,10 +103,8 @@ function Videos({ videos, onDeleteVideo }) {
           <option value="4">Voyage</option>
         </select>
         <button type="button" onClick={handleEdit}>
-          {" "}
           Modifier
         </button>
-        {/* )} */}
       </div>
     </div>
   );

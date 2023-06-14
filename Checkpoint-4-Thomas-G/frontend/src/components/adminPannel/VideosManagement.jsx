@@ -25,15 +25,19 @@ function VideosManagement() {
   const handleDeleteVideo = (image) => {
     // eslint-disable-next-line no-alert
     const confirmDelete = window.confirm(
-      `Êtes-vous sûr de vouloir supprimer l'image${image} ?`
+      `Êtes-vous sûr de vouloir supprimer la moto avec l'ID : ${image} ?`
     );
 
     if (confirmDelete) {
       api
         .delete(`images/${image}`)
-        .then(() => {
-          // eslint-disable-next-line no-alert
-          window.alert(`L'image ${image} a été supprimé avec succès`);
+        .then((reponse) => {
+          if (reponse.status === 204) {
+            // eslint-disable-next-line no-alert
+            window.alert(
+              `La moto avec l'ID : ${image} a été supprimé avec succès`
+            );
+          }
         })
         .catch((error) => console.error(error));
       setVideosChanging(!videosChanging);

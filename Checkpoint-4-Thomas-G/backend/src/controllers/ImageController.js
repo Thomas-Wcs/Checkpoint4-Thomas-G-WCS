@@ -92,8 +92,8 @@ const add = async (req, res) => {
 const destroy = async (req, res) => {
   await models.images
     .delete(req.params.id)
-    .then(([result]) => {
-      if (result.affectedRows === 0) {
+    .then((response) => {
+      if (response.affectedRows === 0) {
         res.sendStatus(404);
       } else {
         res.sendStatus(204);
