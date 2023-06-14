@@ -9,8 +9,6 @@ function VideoUpdate() {
   const navigate = useNavigate();
   const [allCategory, setCategory] = useState([]);
   const [newImageData, setNewImageData] = useState();
-  // eslint-disable-next-line no-restricted-syntax
-  console.log(newImageData);
 
   useEffect(() => {
     const getVideoData = async () => {
@@ -75,7 +73,7 @@ function VideoUpdate() {
       <h2 className="sectionUpdateTitle">Edition de la video</h2>
       <form className="sectionUpdateForm" onSubmit={handleSubmit}>
         <div className="sectionUpdateId">
-          <label htmlFor="id">Identifiant de la video :</label>
+          <label htmlFor="id">ID de l'image :</label>
           <input
             type="text"
             placeholder="id"
