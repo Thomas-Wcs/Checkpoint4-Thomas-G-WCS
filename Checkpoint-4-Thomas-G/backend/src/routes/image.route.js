@@ -3,7 +3,7 @@ const multer = require("multer");
 const path = require("path");
 const auth = require("../utils/Auth");
 
-const uploadFolder = path.join(__dirname, "../../public/assets/videos");
+const uploadFolder = path.join(__dirname, "../../public/assets/images");
 
 const upload = multer({ dest: uploadFolder });
 const ImageRoute = express.Router();
@@ -11,8 +11,6 @@ const ImageRoute = express.Router();
 const ImageController = require("../controllers/ImageController");
 
 ImageRoute.get("/", ImageController.browse);
-ImageRoute.get("/adminFindAllVideos", ImageController.findAllVideoForAdmin);
-ImageRoute.get("/allData", ImageController.readAll);
 ImageRoute.get("/:id", ImageController.read);
 ImageRoute.use(auth.verifyAdmin);
 ImageRoute.put("/:id", ImageController.edit);
