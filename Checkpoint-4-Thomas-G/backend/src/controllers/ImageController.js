@@ -54,8 +54,7 @@ const add = async (req, res) => {
     "..",
     "public",
     "assets",
-    "images",
-    "confidentiel"
+    "images"
   );
   const originalName = path.join(baseFolder, file.originalname);
   const filename = path.join(baseFolder, file.filename);
@@ -63,7 +62,7 @@ const add = async (req, res) => {
   fs.rename(filename, originalName, (err) => {
     if (err) res.status(500);
   });
-  const link = `assets/images/confidentiel/${file.originalname}`;
+  const link = `assets/images/${file.originalname}`;
 
   // TODO validations (length, format...)
   try {
