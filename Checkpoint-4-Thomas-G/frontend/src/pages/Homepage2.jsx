@@ -12,7 +12,7 @@ function Homepage2() {
     <div style={{ paddingTop: "200px" }}>
       <img
         className="logo-front-moto"
-        style={{ width: "100px", height: "100px", margin: "50px" }}
+        // style={{ width: "100px", height: "100px", margin: "50px" }}
         src={logoFront}
         alt="logo jaune avec une moto"
       />
