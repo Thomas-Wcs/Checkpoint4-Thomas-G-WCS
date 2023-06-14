@@ -9,14 +9,12 @@ function VideoUpdate() {
   const navigate = useNavigate();
   const [allCategory, setCategory] = useState([]);
   const [videoData, setVideoData] = useState();
-  const [allSection, setAllSection] = useState();
-  const [videoSection, setVideoSection] = useState();
-  const [rawVideoData, setRawVideoData] = useState();
+  const [newvideoData, setNewVideoData] = useState();
+  console.log(newvideoData);
 
   useEffect(() => {
     const getVideoData = async () => {
-      await api.get(`videos/${id}`).then((res) => {
-        setRawVideoData(res.data);
+      await api.get(`images/${id}`).then((res) => {
         setVideoData(res.data);
       });
     };
@@ -27,121 +25,29 @@ function VideoUpdate() {
     api.get("/category").then((res) => setCategory(res.data));
   }, [id]);
 
-  useEffect(() => {
-    api.get("/sections").then((res) => setAllSection(res.data));
-  }, [id]);
-
-  useEffect(() => {
-    api.get("/video_section").then((res) => {
-      const videoSectionData = res.data.find(
-        (item) => item.video_id === videoData?.id
-      );
-      setVideoSection(videoSectionData?.section_id || "");
-    });
-  }, [videoData?.id]);
-
   function handleChange(e) {
-    const { name, checked } = e.target;
+    const { values } = e.target;
     let newValue;
-
-    if (name === "isVideoPaying" || name === "isVideoPremium") {
-      newValue = checked ? 1 : 0;
-    } else {
-      newValue = e.target.value;
-    }
-
-    setVideoData((prevState) => ({
+    setNewVideoData((prevState) => ({
       ...prevState,
-      [name]: newValue,
-    }));
-  }
-
-  function handleSectionChange(e) {
-    const { value } = e.target;
-    setVideoData((prevVideoData) => ({
-      ...prevVideoData,
-      SectionID: parseInt(value, 10),
+      [values]: newValue,
     }));
   }
 
   function multiUpdate() {
-    if (rawVideoData.SectionID !== null && videoData.SectionID !== null) {
-      api
-        .put(`videos/${videoData.id}`, {
-          title: videoData.title,
-          description_text: videoData.description_text,
-          link: videoData.link,
-          category_id: videoData.category_id,
-          isVideoPaying: videoData.isVideoPaying,
-          isVideoPremium: videoData.isVideoPremium,
-        })
-        .then(() => {
-          navigate("/adminPanel/videosTable");
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-
-      api
-        .put(`video_section/${videoData.video_section_id}`, {
-          section_id: videoData.SectionID,
-          id: rawVideoData.video_section_id,
-        })
-        .then(() => {
-          navigate("/adminPanel/videosTable");
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    } else if (
-      rawVideoData.SectionID === null &&
-      videoData.SectionID === null
-    ) {
-      api
-        .put(`videos/${videoData.id}`, {
-          title: videoData.title,
-          description_text: videoData.description_text,
-          link: videoData.link,
-          category_id: videoData.category_id,
-          isVideoPaying: videoData.isVideoPaying,
-          isVideoPremium: videoData.isVideoPremium,
-        })
-        .then(() => {
-          navigate("/adminPanel/videosTable");
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    } else if (
-      rawVideoData.SectionID === null &&
-      videoData.SectionID !== null
-    ) {
-      api
-        .put(`videos/${videoData.id}`, {
-          title: videoData.title,
-          description_text: videoData.description_text,
-          link: videoData.link,
-          category_id: videoData.category_id,
-          isVideoPaying: videoData.isVideoPaying,
-          isVideoPremium: videoData.isVideoPremium,
-        })
-        .then(() => {
-          navigate("/adminPanel/videosTable");
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-
-      api
-        .post("video_section/add_section", {
-          videoId: videoData.id,
-          sectionId: videoData.SectionID,
-        })
-        .then()
-        .catch((err) => {
-          console.error(err);
-        });
-    }
+    api
+      .put(`images/${videoData.id}`, {
+        title: videoData.title,
+        description_text: videoData.description_text,
+        link: videoData.link,
+        category_id: videoData.category_id,
+      })
+      .then(() => {
+        navigate("/adminPanel/videosTable");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   function handleSubmit(e) {
@@ -160,13 +66,13 @@ function VideoUpdate() {
             placeholder="id"
             value={videoData?.id}
             className="sectionUpdateInput"
-            onChange={(handleChange, handleSectionChange)}
+            onChange={handleChange}
             name="id"
             disabled
           />
         </div>
         <div className="sectionUpdateName">
-          <label htmlFor="title">Titre de la vidéo :</label>
+          <label htmlFor="title">Titre de l'image :</label>
           <input
             type="text"
             placeholder="Titre de la video"
@@ -204,44 +110,6 @@ function VideoUpdate() {
               ))}
             </select>
           )}
-
-          <label htmlFor="section_id">
-            {" "}
-            {videoData?.video_section_id
-              ? `Modifier la section (section actuelle : ${videoData.SectionName})`
-              : "Ajouter à une section"}
-          </label>
-
-          {allSection && (
-            <select
-              name="section_id"
-              value={videoSection?.id}
-              onChange={handleSectionChange}
-              className="selecter"
-            >
-              <option value="">Veuillez sélectionner une section</option>
-              {allSection.map((sec, index) => (
-                // eslint-disable-next-line react/no-array-index-key
-                <option value={sec.id} key={index}>
-                  {sec.name}
-                </option>
-              ))}
-            </select>
-          )}
-          <label htmlFor="isVideoPaying">Video Payante?</label>
-          <input
-            type="checkbox"
-            name="isVideoPaying"
-            checked={videoData?.isVideoPaying === 1}
-            onChange={handleChange}
-          />
-          <label htmlFor="isVideoPremium">Video Premium?</label>
-          <input
-            type="checkbox"
-            name="isVideoPremium"
-            checked={videoData?.isVideoPremium === 1}
-            onChange={handleChange}
-          />
         </div>
         <button type="submit" className="sectionUpdateButton">
           Mettre à jour
