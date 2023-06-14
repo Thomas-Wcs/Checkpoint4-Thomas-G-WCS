@@ -38,7 +38,7 @@ export default function AdminPanel() {
               <Link to="/adminPanel/usersTable">Utilisateurs</Link>
             </li>
             <li>
-              <Link to="/adminPanel/videosTable">Videos</Link>
+              <Link to="/adminPanel/videosTable">Motos Images</Link>
             </li>
             <li>
               <Link to="/adminPanel/AdvertsTable">Pub</Link>

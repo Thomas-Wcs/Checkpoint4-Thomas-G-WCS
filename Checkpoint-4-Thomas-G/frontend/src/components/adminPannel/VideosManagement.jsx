@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { DeleteOutline } from "@mui/icons-material";
 import PostAddRoundedIcon from "@mui/icons-material/PostAddRounded";
 import { Box } from "@mui/material";
-import moment from "moment";
 import { DataGrid } from "@mui/x-data-grid/node";
 import useAPI from "../../api/useAPI";
 import "../../styles/index.css";
@@ -11,30 +10,30 @@ import dataTableStyle from "./DataTableStyle";
 
 function VideosManagement() {
   const api = useAPI();
-  const [videos, setVideos] = useState([]);
+  const [images, setImages] = useState([]);
   const [videosChanging, setVideosChanging] = useState(true);
 
   useEffect(() => {
     api
-      .get("/videos/adminFindAllVideos")
+      .get("/images")
       .then((data) => {
-        setVideos(data.data);
+        setImages(data.data);
       })
       .catch((error) => console.error(error));
   }, [videosChanging]);
 
-  const handleDeleteVideo = (video) => {
+  const handleDeleteVideo = (image) => {
     // eslint-disable-next-line no-alert
     const confirmDelete = window.confirm(
-      `Êtes-vous sûr de vouloir supprimer la video${video} ?`
+      `Êtes-vous sûr de vouloir supprimer l'image${image} ?`
     );
 
     if (confirmDelete) {
       api
-        .delete(`videos/${video}`)
+        .delete(`images/${image}`)
         .then(() => {
           // eslint-disable-next-line no-alert
-          window.alert(`La video ${video} a été supprimé avec succès`);
+          window.alert(`L'image ${image} a été supprimé avec succès`);
         })
         .catch((error) => console.error(error));
       setVideosChanging(!videosChanging);
@@ -42,42 +41,21 @@ function VideosManagement() {
   };
 
   const columns = [
-    { field: "id", headerName: "Id", width: 80 },
-    { field: "title", headerName: "Title", width: 150, editable: true },
+    { field: "id", headerName: "Id", width: 100 },
+    { field: "title", headerName: "Title", width: 300, editable: true },
     {
       field: "description_text",
       headerName: "Description",
-      width: 150,
+      width: 300,
       editable: true,
     },
     {
       field: "category_id",
       headerName: "Categorie",
-      width: 150,
-      editable: true,
-    },
-    {
-      field: "name",
-      headerName: "Section",
-      width: 150,
+      width: 300,
       editable: true,
     },
     { field: "link", headerName: "Link", width: 150, editable: true },
-    {
-      field: "isVideoPaying",
-      headerName: "Paying",
-      type: "boolean",
-      width: 100,
-      editable: true,
-    },
-    {
-      field: "isVideoPremium",
-      headerName: "Premium",
-      type: "boolean",
-
-      width: 100,
-      editable: true,
-    },
     {
       field: "action",
       headerName: "Action",
@@ -99,33 +77,22 @@ function VideosManagement() {
         );
       },
     },
-    {
-      field: "date_publication",
-      headerName: "Date",
-      width: 250,
-      editable: true,
-      renderCell: (params) =>
-        moment(params.row.date).format("DD-MM-YYYY HH:MM:SS"),
-    },
   ];
 
-  const rows = videos.map((video) => {
+  const rows = images.map((image) => {
     return {
-      id: video.id,
-      title: video.title,
-      description_text: video.description_text,
-      category_id: video.categorie_name,
-      link: video.link,
-      date_publication: video.date_publication,
-      name: video.name,
-      isVideoPremium: video.isVideoPremium,
-      isVideoPaying: video.isVideoPaying,
+      id: image.id,
+      title: image.title,
+      description_text: image.description_text,
+      category_id: image.categorie_name,
+      link: image.link,
+      name: image.name,
     };
   });
 
   return (
     <div className="user-management">
-      <h1>Videos</h1>
+      <h1>Images</h1>
       <Link to="/newVideo">
         <PostAddRoundedIcon
           style={{ fontSize: 48, color: "#10bcdd" }}

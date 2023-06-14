@@ -7,7 +7,7 @@ class VideoManager extends AbstractManager {
 
   findAll() {
     return this.database.query(
-      `SELECT images.*, categorie.name
+      `SELECT images.*, categorie.name AS categorie_name
       FROM images
       INNER JOIN categorie ON images.category_id = categorie.id;`
     );
