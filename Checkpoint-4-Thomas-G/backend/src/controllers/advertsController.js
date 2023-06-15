@@ -36,16 +36,19 @@ const edit = async (req, res) => {
   const { pictures, text, lienArticle } = req.body;
 
   try {
-    const result = models.adverts
+    models.adverts
       .update({
         pictures,
         text,
         lienArticle,
         id,
       })
-      .then((res) => {
-        console.log(res);
+      .then((response) => {
+        if (response.affectedRows === 1) {
+          res.sendStatus(204);
+        }
       });
+    return true;
   } catch (err) {
     return res.status(500).send(err);
   }
