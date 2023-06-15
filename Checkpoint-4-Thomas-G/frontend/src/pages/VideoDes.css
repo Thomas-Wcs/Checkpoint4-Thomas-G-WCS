@@ -1,0 +1,18 @@
+.image-description-single-page {
+  display: flex;
+  padding-top: 80px;
+  color: aliceblue;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+.image-descrip-single-page {
+  width: 50%;
+  margin: 1%;
+}
+.para-descri-singlepage {
+  width: 50%;
+  color: aliceblue;
+}

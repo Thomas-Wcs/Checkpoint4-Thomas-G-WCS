@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import "./VideoDes.css";
 import useAPI from "../api/useAPI";
 
 export default function VideoDescription() {
@@ -13,11 +13,17 @@ export default function VideoDescription() {
   }, [id]);
 
   return (
-    <div id="video-main">
-      {newImage?.date_publication && <div id="video-display" />}
-      <img src={`${import.meta.env.VITE_APP_API_URL}${newImage.link}`} alt="" />
+    <div className="image-description-single-page">
+      {newImage?.date_publication && (
+        <div className="image-description-single-page" />
+      )}
+      <img
+        className="image-descrip-single-page"
+        src={`${import.meta.env.VITE_APP_API_URL}${newImage.link}`}
+        alt="une moto"
+      />
       <h1>{newImage.title}</h1>
-      <p> {newImage.description_text} </p>
+      <p className="para-descri-singlepage"> {newImage.description_text} </p>
     </div>
   );
 }
