@@ -6,7 +6,8 @@ function AdvertAdd() {
   const navigate = useNavigate();
 
   const [pictures, setPictures] = useState("");
-
+  const [descriptionTextAdv, setdescriptionTextAdv] = useState("");
+  const [lienURL, setLienURL] = useState("");
   const [fileUpload, setFileUpload] = useState(null);
   const [advertChanging, setAdvertChanging] = useState(true);
 
@@ -30,17 +31,35 @@ function AdvertAdd() {
 
   return (
     <div className="sectionUpdate">
-      <h2 className="sectionUpdateTitle">Page de publicités</h2>
+      <h2 className="sectionUpdateTitle">Page d'articles</h2>
 
       <div className="sectionUpdateForm">
         <div className="sectionUpdateName">
-          <label htmlFor="pictures">Titre de la publicité :</label>
+          <label htmlFor="pictures">Titre de l'article:</label>
           <input
             type="text"
             placeholder="Titre"
             className="sectionUpdateInput"
             value={pictures}
             onChange={(e) => setPictures(e.target.value)}
+            name="pictures"
+          />
+          <label htmlFor="pictures">Description de l'article:</label>
+          <input
+            type="text"
+            placeholder="Description"
+            className="sectionUpdateInput"
+            value={descriptionTextAdv}
+            onChange={(e) => setdescriptionTextAdv(e.target.value)}
+            name="pictures"
+          />
+          <label htmlFor="pictures">Lien URL de l'article:</label>
+          <input
+            type="text"
+            placeholder="Lien"
+            className="sectionUpdateInput"
+            value={lienURL}
+            onChange={(e) => setLienURL(e.target.value)}
             name="pictures"
           />
         </div>

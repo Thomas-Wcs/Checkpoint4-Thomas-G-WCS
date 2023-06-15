@@ -13,6 +13,8 @@ function AdvertManagement() {
   const [advertInfo, setAdvertInfo] = useState();
   const [advertChanging, setAdvertChanging] = useState(true);
 
+  console.log(advertChanging);
+
   useEffect(() => {
     api.get("adverts").then((res) => setAdvertInfo(res.data));
   }, [advertChanging]);
