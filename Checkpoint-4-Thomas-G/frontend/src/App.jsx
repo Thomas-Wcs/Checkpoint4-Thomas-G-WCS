@@ -19,6 +19,7 @@ import AdminWall from "./utils/AdminWall";
 import AdvertAdd from "./components/advertising/AdvertAdd";
 import "./scss/index.css";
 import AdvertUpdate from "./components/advertising/AdvertUpdate";
+import VideoDescription from "./pages/VideoDescription";
 
 function App() {
   return (
@@ -28,6 +29,10 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Homepage2 />} />
+            <Route
+              path="video_description/:id"
+              element={<VideoDescription />}
+            />
             <Route path="/connexion" element={<ConnectionPage />} />
             <Route path="/aboutPage" element={<AboutPage />} />
             <Route path="/profile" element={<Profile />}>

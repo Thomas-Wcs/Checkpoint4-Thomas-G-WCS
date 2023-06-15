@@ -29,15 +29,15 @@ function Homepage2() {
           alt="logo jaune avec une moto"
         />
       </div>
-
       {userInfo.email ? (
         <div>
+          {" "}
           <div>
             <AccountMenu2 userInfo={{ ...userInfo, firstname }} reset={reset} />
           </div>
           <div>
             <UserFavorite />
-          </div>
+          </div>{" "}
         </div>
       ) : (
         <div>
