@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid/node";
 import { Box } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import moment from "moment";
 import PostAddRoundedIcon from "@mui/icons-material/PostAddRounded";
 import { Link } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
@@ -41,12 +40,16 @@ function AdvertManagement() {
     { field: "pictures", headerName: "Nom de l'image", width: 350 },
     { field: "picture_link", headerName: "Lien de l'image", width: 350 },
     {
-      field: "date_publication",
-      headerName: "Date",
+      field: "text",
+      headerName: "Description",
       width: 350,
       editable: true,
-      renderCell: (params) =>
-        moment(params.row.date).format("DD-MM-YYYY HH:MM:SS"),
+    },
+    {
+      field: "lienArticle",
+      headerName: "Lien Article",
+      width: 350,
+      editable: true,
     },
     {
       field: "edit",
@@ -102,6 +105,8 @@ function AdvertManagement() {
       id: advert.id,
       pictures: advert.pictures,
       picture_link: advert.picture_link,
+      text: advert.text,
+      lienArticle: advert.lienArticle,
     };
   });
   return (

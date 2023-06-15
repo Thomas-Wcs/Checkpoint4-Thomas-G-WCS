@@ -767,10 +767,10 @@ body .lab-categories-chek .small-img-categorie-chek {
 
 .search-bar-profil {
   display: flex;
-  justify-content: left;
   align-items: center;
-  margin: 50px;
-  flex-direction: column;
+  margin: 10px;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 .search-bar-profil .entree-text-search {
   font-size: 20px;
