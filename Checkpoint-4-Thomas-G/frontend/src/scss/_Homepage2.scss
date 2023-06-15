@@ -5,6 +5,16 @@ body {
   .main-homepage-conteneur {
     padding-top: 90px;
   }
+  .homepage2-main-triple-conteneur {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  // .selection-des-categories,
+  // .video-grid,
+  // .articles-afficher-actu {
+  //   flex-basis: calc(33.33% - 20px);
+  // }
   .conteneur-image-logo-home {
     background-color: yellow;
     display: flex;
@@ -31,5 +41,20 @@ body {
 
   h1 {
     color: white;
+  }
+}
+
+@media (max-width: 700px) {
+  .logo-vintage-moto {
+    display: none;
+  }
+  .moto-api-title {
+    display: none;
+  }
+  .articles-afficher-actu {
+    display: none;
+  }
+  .selection-des-categories {
+    display: none;
   }
 }
