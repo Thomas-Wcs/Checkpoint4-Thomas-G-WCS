@@ -5,6 +5,7 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
 body {
   background-color: black;
   font-family: "PT Sans", sans-serif;
@@ -815,6 +816,7 @@ body h1 {
   width: 100%;
   justify-content: space-between;
   align-items: flex-end;
+  font-family: "PT Sans", sans-serif;
 }
 .footer_container .footer_logo {
   width: 40px;
@@ -824,7 +826,7 @@ body h1 {
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
-  color: #10bcdd;
+  color: #ddd610;
 }
 .footer_container .footer_brand_text .footer_list {
   display: flex;
@@ -834,7 +836,7 @@ body h1 {
   margin-left: 4px;
 }
 .footer_container .footer_link {
-  color: #10bcdd;
+  color: #ddd610;
 }
 
 .sectionUpdate {

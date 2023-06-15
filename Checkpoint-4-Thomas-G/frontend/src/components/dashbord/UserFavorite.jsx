@@ -11,7 +11,6 @@ export default function UserFavorite() {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [checkedCategories, setCheckedCategories] = useState([]);
-  console.log(checkedCategories);
 
   const handleCheckboxChange = (event, categorie) => {
     if (event.target.checked) {

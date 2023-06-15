@@ -1,3 +1,6 @@
+@import "./variables";
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
+
 .footer_container {
   display: flex;
   flex-direction: row;
@@ -8,6 +11,7 @@
   width: 100%;
   justify-content: space-between;
   align-items: flex-end;
+  font-family: "PT Sans", sans-serif;
 
   .footer_logo {
     width: 40px;
@@ -18,7 +22,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
-    color: #10bcdd;
+    color: $main-yellow;
 
     .footer_list {
       display: flex;
@@ -30,10 +34,6 @@
     }
   }
   .footer_link {
-    color: #10bcdd;
-  }  
-
+    color: $main-yellow;
+  }
 }
-
-
-

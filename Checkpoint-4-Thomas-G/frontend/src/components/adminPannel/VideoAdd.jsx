@@ -76,10 +76,10 @@ function VideoAdd() {
 
   return (
     <div className="sectionUpdate">
-      <h2 className="sectionUpdateTitle">Page de video</h2>
+      <h2 className="sectionUpdateTitle">Page de motos</h2>
       <div className="sectionUpdateForm">
         <div className="sectionUpdateName">
-          <label htmlFor="title">Titre de la vidéo :</label>
+          <label htmlFor="title">Titre de la moto :</label>
           <input
             type="text"
             placeholder="Titre"
@@ -90,7 +90,7 @@ function VideoAdd() {
           />
         </div>
         <div className="sectionUpdateName">
-          <label htmlFor="description_text">Description de la vidéo :</label>
+          <label htmlFor="description_text">Description de la moto :</label>
           <input
             type="text"
             placeholder="Description"
