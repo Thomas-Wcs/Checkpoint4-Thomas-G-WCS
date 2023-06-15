@@ -36,9 +36,9 @@ function AdvertManagement() {
   };
 
   const columns = [
-    { field: "id", headerName: "advertID", width: 150 },
+    { field: "id", headerName: "ID", width: 80 },
     { field: "pictures", headerName: "Nom de l'image", width: 350 },
-    { field: "picture_link", headerName: "Lien de l'image", width: 350 },
+    { field: "picture_link", headerName: "Lien de l'image", width: 250 },
     {
       field: "text",
       headerName: "Description",
@@ -48,7 +48,7 @@ function AdvertManagement() {
     {
       field: "lienArticle",
       headerName: "Lien Article",
-      width: 350,
+      width: 250,
       editable: true,
     },
     {
