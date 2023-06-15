@@ -12,8 +12,18 @@ Exécutez npm install ou yarn install.
 
 Créez un fichier .env à partir du fichier .env.sample et ajoutez vos paramètres de base de données. Ne supprimez pas le fichier .sample, il doit être conservé.
 
+- `migrate` : Exécute le script de création de la base de données
+- `dev` : Démarrage des deux serveurs (frontend + backend) dans un même terminal
+- `dev-front` : Démarrage d'un serveur React pour le frontend
+- `dev-back` : Démarrage d'un serveur Express pour le backend
+- `lint` : Exécute des outils de validation de code (sera exécutée automatiquement à chaque _commit_)
+- `fix` : Fixe les erreurs de formatage (à lancer si `lint` ne passe pas)
+-- `npm run dev` : Démarrage d'un serveur React pour le frontend et le backend
+
 makefile
 Copy code
+
+### Configurations fichiers .env backend
 
 Fichier .env du back :
 
@@ -28,8 +38,10 @@ VITE_APP_API_URL= http://localhost:xxxx/
 JWT_SECRET="zfejzikfaheqsgfqgrhghzaz451564165grefezfzf1gn"
 MAIL_SERVER='smtp-relay.sendinblue.com'
 MAIL_PORT=587
-MAIL_SENDER=testwcs004@gmail.com
-MAIL_MDP=OjtadQLyY6RgTVNx
+MAIL_SENDER=créer un compte sur le site sendinblue.com si vous voulez recevoir le mail de bienvenu lors de l'inscription.
+MAIL_MDP=PASSWORD
+
+### Configurations fichiers .env frontend
 
 Le fichier .env du front :
 
@@ -57,3 +69,13 @@ Modifier un article : PUT localhost:5000/items/:id
 Ajouter un article : POST localhost:5000/items
 Supprimer un article : DELETE localhost:5000/items/:id
 Vous pouvez trouver toutes ces routes déclarées dans le fichier src/router.js. Vous pouvez ajouter vos propres routes, contrôleurs et modèles.
+
+### Listing des outils utilisés
+
+- _Concurrently_ : Permet d'exécuter plusieurs commandes dans un même terminal
+- _Husky_ : Permet d'exécuter des actions en déclenchement de commandes _git_
+- _Vite_ : Alternative à _Create-React-App_, embarquant moins de packages pour une expérience plus fluide
+- _ESLint_ : Outil de "qualité de code", permet de s'assurer que des règles pré-configurées sont bien respectées
+- _Prettier_ : Outil de "qualité de code" également, se concentre plus particulièrement sur le style du code
+- _Standard Airbnb_ : L'un des "standards" les plus connus, même s'il n'est pas officiellement lié à ES/JS
+- _Nodemon_ : Outil permettant de relancer un serveur à chaque fois qu'un des fichiers est modifié
