@@ -22,14 +22,10 @@ class AdvertsManager extends AbstractManager {
   }
 
   update(adverts) {
+    console.log(adverts);
     return this.database.query(
-      `update ${this.table} set pictures = ?, picture_link = ? text = ? lienArticle = ? where id = ?`,
-      [
-        adverts.pictures,
-        adverts.picture_link,
-        adverts.text,
-        adverts.lienArticle,
-      ]
+      `update ${this.table} set pictures = ?, text = ?, lienArticle = ? where id = ?`,
+      [adverts.pictures, adverts.text, adverts.lienArticle, adverts.id]
     );
   }
 

@@ -18,6 +18,7 @@ import VideoAdd from "./components/adminPannel/VideoAdd";
 import AdminWall from "./utils/AdminWall";
 import AdvertAdd from "./components/advertising/AdvertAdd";
 import "./scss/index.css";
+import AdvertUpdate from "./components/advertising/AdvertUpdate";
 
 function App() {
   return (
@@ -80,6 +81,14 @@ function App() {
               element={
                 <AdminWall>
                   <AdvertAdd />
+                </AdminWall>
+              }
+            />
+            <Route
+              path="/advertManagementUpdate/:id"
+              element={
+                <AdminWall>
+                  <AdvertUpdate />
                 </AdminWall>
               }
             />

@@ -28,7 +28,7 @@ function AdvertManagement() {
         .delete(`adverts/${advert}`)
         .then(() => {
           // eslint-disable-next-line no-alert
-          window.alert(`La publicité ${advert} a été supprimée avec succès`);
+          window.alert(`L'article${advert} a été supprimée avec succès`);
         })
         .catch((error) => console.error(error));
       setAdvertChanging(!advertChanging);
@@ -55,23 +55,12 @@ function AdvertManagement() {
       field: "edit",
       headerName: "Edit",
       width: 130,
-      renderCell: () => (
+      renderCell: (params) => (
         <div>
-          <Link to="/advertManagementWindow">
-            <button
-              type="button"
-              style={{
-                fontFamily: "PT Sans",
-                backgroundColor: "green",
-                height: "90%",
-                margin: "1em",
-                padding: "0.9em",
-                borderRadius: "20%",
-                border: "none",
-              }}
-            >
+          <Link to={`/advertManagementUpdate/${params.row.id}`}>
+            <button className="sectionEditBtn" type="submit">
               <EditIcon style={{ width: "100%" }} />
-            </button>{" "}
+            </button>
           </Link>
         </div>
       ),

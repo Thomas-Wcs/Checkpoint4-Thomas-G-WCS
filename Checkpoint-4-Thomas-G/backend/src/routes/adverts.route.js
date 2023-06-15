@@ -13,7 +13,11 @@ const advertsController = require("../controllers/advertsController");
 advertsRouter.get("/", advertsController.browse);
 advertsRouter.get("/:id", advertsController.read);
 advertsRouter.use(auth.verifyAdmin);
-advertsRouter.put("/:id", advertsController.edit);
+advertsRouter.put(
+  "/:id",
+  upload.single("picture_link"),
+  advertsController.edit
+);
 advertsRouter.delete("/:id", advertsController.destroy);
 advertsRouter.post("/", upload.single("picture_link"), advertsController.add);
 

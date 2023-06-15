@@ -31,24 +31,24 @@ const read = (req, res) => {
     });
 };
 
-const edit = (req, res) => {
-  const adverts = req.body;
+const edit = async (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  const { pictures, text, lienArticle } = req.body;
 
-  adverts.id = parseInt(req.params.id, 10);
-
-  models.adverts
-    .update(adverts)
-    .then(([result]) => {
-      if (result.affectedRows === 0) {
-        res.sendStatus(404);
-      } else {
-        res.sendStatus(204);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
+  try {
+    const result = models.adverts
+      .update({
+        pictures,
+        text,
+        lienArticle,
+        id,
+      })
+      .then((res) => {
+        console.log(res);
+      });
+  } catch (err) {
+    return res.status(500).send(err);
+  }
 };
 
 const add = async (req, res) => {
