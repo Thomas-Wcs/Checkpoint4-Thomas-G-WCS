@@ -56,12 +56,13 @@ export default function UserFavorite() {
     return checkedCategories.includes(item.categorie_name);
   });
 
+  console.log(uniqueCategories);
+
   return (
     <div className="main-div-profil-video">
       <div className="title-videos-favorites">
         <div className="search-bar-profil">
           <h4>Chercher une moto :</h4>
-
           <input
             className="entree-text-search"
             type="text"
@@ -75,7 +76,12 @@ export default function UserFavorite() {
         <div className="selection-des-categories">
           {uniqueCategories.map((categorie, index) => (
             // eslint-disable-next-line react/no-array-index-key
-            <label key={index}>
+            <label className="lab-categories-chek" key={index}>
+              <img
+                style={{ width: "100px", height: "70px" }}
+                src={`${import.meta.env.VITE_APP_API_URL}${categorie.link}`}
+                alt=""
+              />
               <input
                 type="checkbox"
                 checked={checkedCategories.includes(categorie.categorie_name)}

@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
+@import "./variables";
+
 body {
   background-color: black;
   font-family: "PT Sans", sans-serif;
@@ -10,11 +13,6 @@ body {
     justify-content: space-between;
   }
 
-  // .selection-des-categories,
-  // .video-grid,
-  // .articles-afficher-actu {
-  //   flex-basis: calc(33.33% - 20px);
-  // }
   .conteneur-image-logo-home {
     background-color: yellow;
     display: flex;
