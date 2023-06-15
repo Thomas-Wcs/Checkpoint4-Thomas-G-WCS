@@ -10,6 +10,14 @@ export default function UserFavorite() {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
+  const uniqueCategories = data.filter((item, index) => {
+    return (
+      data.findIndex((object) => {
+        return object.categorie_name === item.categorie_name;
+      }) === index
+    );
+  });
+
   const api = useAPI();
 
   const getVideoData = async () => {
@@ -39,6 +47,7 @@ export default function UserFavorite() {
       <div className="title-videos-favorites">
         <div className="search-bar-profil">
           <h4>Chercher une moto :</h4>
+
           <input
             className="entree-text-search"
             type="text"
@@ -50,8 +59,14 @@ export default function UserFavorite() {
       </div>
       <div className="homepage2-main-triple-conteneur">
         <div className="selection-des-categories">
-          ICI LA SELECTION DE CATEGORIES
+          {uniqueCategories.map((categorie, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <div key={index}>
+              <h3>Categorie : {categorie.categorie_name} </h3>
+            </div>
+          ))}
         </div>
+
         <div className="video-grid">
           {filteredData.map((image, index) => (
             // eslint-disable-next-line react/no-array-index-key
