@@ -11,6 +11,35 @@ export default function UserFavorite() {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [checkedCategories, setCheckedCategories] = useState([]);
+  const [advertsBDD, setAdvertsBDD] = useState([]);
+
+  const getVideoData = async () => {
+    try {
+      await api.get(`images/`).then((res) => {
+        setData(res.data);
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getVideoData();
+  }, []);
+
+  const getAdvertData = async () => {
+    try {
+      await api.get(`adverts/`).then((res) => {
+        setAdvertsBDD(res.data);
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getAdvertData();
+  }, []);
 
   const handleCheckboxChange = (event, categorie) => {
     if (event.target.checked) {
@@ -30,20 +59,6 @@ export default function UserFavorite() {
     );
   });
 
-  const getVideoData = async () => {
-    try {
-      await api.get(`images/`).then((res) => {
-        setData(res.data);
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    getVideoData();
-  }, []);
-
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -55,8 +70,6 @@ export default function UserFavorite() {
   const checkedFilteredMapData = filteredData.filter((item) => {
     return checkedCategories.includes(item.categorie_name);
   });
-
-  console.log(uniqueCategories);
 
   return (
     <div className="main-div-profil-video">
@@ -78,6 +91,7 @@ export default function UserFavorite() {
             // eslint-disable-next-line react/no-array-index-key
             <label className="lab-categories-chek" key={index}>
               <img
+                className="small-img-categorie-chek"
                 style={{ width: "100px", height: "70px" }}
                 src={`${import.meta.env.VITE_APP_API_URL}${categorie.link}`}
                 alt=""
@@ -107,7 +121,7 @@ export default function UserFavorite() {
                     <div className="favorite-text-and-button">
                       <h4>{image.title}</h4>
                       <div>
-                        {`${image.description_text.slice(0, 30)}...`}
+                        {`${image.description_text.slice(0, 80)}...`}
                         <Link
                           to={`/video_description/${image.id}`}
                           style={{ textDecoration: "none" }}
@@ -131,7 +145,7 @@ export default function UserFavorite() {
                     <div className="favorite-text-and-button">
                       <h4>{image.title}</h4>
                       <div>
-                        {`${image.description_text.slice(0, 30)}...`}
+                        {`${image.description_text.slice(0, 80)}...`}
                         <Link
                           to={`/video_description/${image.id}`}
                           style={{ textDecoration: "none" }}
@@ -145,7 +159,29 @@ export default function UserFavorite() {
               ))}
         </div>
         <div className="articles-afficher-actu">
-          ICI LA SELECTION DE CATEGORIES
+          <div>
+            {advertsBDD.map((article, index) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <div style={{ width: "300px", margin: "50px" }} key={index}>
+                <h2>{article.pictures}</h2>
+                <p>{article.text}</p>
+                <img
+                  style={{ width: "300px" }}
+                  src={`${import.meta.env.VITE_APP_API_URL}${
+                    article.picture_link
+                  }`}
+                  alt=""
+                />
+                <a
+                  href={article.lienArticle}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Lire la suite
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

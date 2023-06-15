@@ -43,18 +43,22 @@ body .moto-api-title {
 body h1 {
   color: white;
 }
+body .lab-categories-chek {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+body .lab-categories-chek .small-img-categorie-chek {
+  margin-right: 5%;
+  margin-top: 10%;
+}
 
 @media (max-width: 700px) {
   .logo-vintage-moto {
     display: none;
   }
   .moto-api-title {
-    display: none;
-  }
-  .articles-afficher-actu {
-    display: none;
-  }
-  .selection-des-categories {
     display: none;
   }
 }
@@ -797,6 +801,14 @@ body h1 {
   color: #ffff27;
 }
 
+@media (max-width: 700px) {
+  .articles-afficher-actu {
+    display: none;
+  }
+  .selection-des-categories {
+    display: none;
+  }
+}
 .footer_container {
   display: flex;
   flex-direction: row;

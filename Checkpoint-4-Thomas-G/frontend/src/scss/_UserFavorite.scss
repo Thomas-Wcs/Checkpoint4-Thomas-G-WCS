@@ -68,3 +68,12 @@
 .voir-plus-fav-video {
   color: $main-blue;
 }
+
+@media (max-width: 700px) {
+  .articles-afficher-actu {
+    display: none;
+  }
+  .selection-des-categories {
+    display: none;
+  }
+}
