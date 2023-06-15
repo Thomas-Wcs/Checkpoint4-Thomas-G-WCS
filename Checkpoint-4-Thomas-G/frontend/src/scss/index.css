@@ -442,6 +442,7 @@ body .lab-categories-chek .small-img-categorie-chek {
   background: rgba(255, 255, 255, 0.197);
   font-family: "PT sans", sans-serif;
   padding-left: 20px;
+  border-radius: 30px;
 }
 #connection .user-input::placeholder {
   color: #ffffff;
@@ -462,18 +463,20 @@ body .lab-categories-chek .small-img-categorie-chek {
 }
 #connection .user-button {
   background: none;
-  border: 1px solid #ffff27;
-  color: #ffff27;
+  border: 1px solid #ffffff;
+  color: #ffffff;
   width: 15%;
   height: 50px;
   z-index: 10;
   font-family: "PT Sans", sans-serif;
+  border-radius: 30px;
+  transition: 0.3s ease-in-out;
 }
 #connection .user-button:hover {
   cursor: pointer;
   z-index: 10;
-  background: #ffff27;
-  color: #000000;
+  background: #000000;
+  scale: 1.1;
 }
 @media screen and (max-width: 760px) {
   #connection .user-button {

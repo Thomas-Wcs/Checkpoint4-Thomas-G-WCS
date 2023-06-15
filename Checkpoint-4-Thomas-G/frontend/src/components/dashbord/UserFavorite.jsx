@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAPI from "../../api/useAPI";
 import { useAuth } from "../../context/AuthContext";
+import PopUp from "./PopUp";
 import "../../scss/index.css";
 
 export default function UserFavorite() {
@@ -122,10 +123,7 @@ export default function UserFavorite() {
                       <h4>{image.title}</h4>
                       <div>
                         {`${image.description_text.slice(0, 80)}...`}
-                        <Link
-                          to={`/video_description/${image.id}`}
-                          style={{ textDecoration: "none" }}
-                        >
+                        <Link to={`/video_description/${image.id}`}>
                           <p className="voir-plus-fav-video">voir plus</p>
                         </Link>
                       </div>
