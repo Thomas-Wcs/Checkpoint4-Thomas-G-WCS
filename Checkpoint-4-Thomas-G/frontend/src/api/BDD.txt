@@ -1,0 +1,141 @@
+CREATE DATABASE  IF NOT EXISTS `checkpoint4` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `checkpoint4`;
+-- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: checkpoint4
+-- ------------------------------------------------------
+-- Server version	8.0.32
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `adverts`
+--
+
+DROP TABLE IF EXISTS `adverts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `adverts` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `pictures` varchar(225) NOT NULL,
+  `picture_link` varchar(225) NOT NULL,
+  `text` text,
+  `lienArticle` varchar(2000) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `adverts`
+--
+
+LOCK TABLES `adverts` WRITE;
+/*!40000 ALTER TABLE `adverts` DISABLE KEYS */;
+INSERT INTO `adverts` VALUES (2,'Suzuki annonce l’arrivée de la V-Strom 800DE Rally Edition','assets/images/ads/hill.jpg','Après avoir présenté son nouveau trail bicylindre Suzuki V-Strom 800DE à la fin de l\'année 2022, la marque japonaise offre désormais la possibilité d’aller encore plus loin dans l’aventure avec une version Rally Edition de la moto. Sabot aluminium renforcé, pneumatiques dédiés à un usage hors-pistes, pare-carters et kit décoration viennent renforcer l’image de baroudeuse de la V-Strom.','https://www.caradisiac.com/suzuki-annonce-l-arrivee-de-la-v-strom-800de-rally-edition-202840.htm'),(3,'Une Indian Sport Chief customisée pour Richard Jones de The Stereophonics','assets/images/ads/hill2.jpg','Bassiste et membre fondateur du groupe de rock gallois The Stereophonics, Richard Jones a reçu un joli cadeau de la part d’Indian : une Indian Sport Chief spécialement customisée pour l’occasion par l’atelier Krazy Horse.','https://www.caradisiac.com/une-indian-sport-chief-customisee-pour-richard-jones-de-the-stereophonics-202876.htm'),(4,'Scooters : une statistique édifiante révélée par le baromètre Ipsos-Macif','assets/images/ads/hill3.jpg','Dans le cadre de son baromètre annuel portant sur les addictions des 16/30 ans, l’étude Ipsos/Macif révèle une statistique édifiante concernant les comportements des jeunes conducteurs de scooters. Ils sont ainsi 30 % à avoir déjà regardé une série sur leur Smartphone tout en roulant.','https://www.caradisiac.com/scooters-une-statistique-edifiante-revelee-par-le-barometre-ipsos-macif-202863.htm'),(14,'Essai - Yamaha Booster et Booster Easy : la résurrection','assets/images/ads/hill4.jpg','Après l’arrêt de son modèle original en 2010 et voyant le marché du vélo électrique exploser, Yamaha décide de ressusciter le 2 roues iconique sous la forme d’un vélo à assistance électrique de type Fatbike. Nous sommes allés l’essayer à Amsterdam pour nous en faire une première idée. ','https://www.caradisiac.com/essai-yamaha-booster-et-booster-easy-la-resurrection-202792.htm');
+/*!40000 ALTER TABLE `adverts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `categorie`
+--
+
+DROP TABLE IF EXISTS `categorie`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `categorie` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(220) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categorie`
+--
+
+LOCK TABLES `categorie` WRITE;
+/*!40000 ALTER TABLE `categorie` DISABLE KEYS */;
+INSERT INTO `categorie` VALUES (1,'Trails'),(2,'Sports'),(3,'Routiere'),(4,'Roadster'),(5,'Cross'),(7,'Touring');
+/*!40000 ALTER TABLE `categorie` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `images`
+--
+
+DROP TABLE IF EXISTS `images`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `images` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(225) NOT NULL,
+  `link` varchar(225) NOT NULL,
+  `category_id` int NOT NULL,
+  `description_text` text,
+  PRIMARY KEY (`id`),
+  KEY `fk_categorie_videos` (`category_id`),
+  CONSTRAINT `fk_categorie_videos` FOREIGN KEY (`category_id`) REFERENCES `categorie` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `images`
+--
+
+LOCK TABLES `images` WRITE;
+/*!40000 ALTER TABLE `images` DISABLE KEYS */;
+INSERT INTO `images` VALUES (126,'Honda CRF 1000 Africa Twin','assets/images/trail1.jpg',1,'En termes de moto trail, on trouve que la CRF 1000 L Africa Twin de Honda est la plus réussie côté look. On la trouve vraiment magnifique. Par ailleurs, cette moto est un vrai trail. Comportement du moteur, position de conduite, freins, suspensions, roues de 21 pouces, etc., Honda propose ici un trail efficace et simple.  Par ailleurs, nous apprécions ses commandes précises et douces, sa selle bien dessinée, et son moteur qui a du caractère. Le châssis de la CRF 1000 L Africa Twin est également léger et facile. Vous adorerez son confort de trail.'),(127,'BMW R 1200 GS','assets/images/trail2.jpg',1,'Pour les motos trail, la R 1200 GS de BMW est la référence sur route. En roulant un peu avec elle, vous comprendrez rapidement son grand succès. Certes, cette moto n’est pas la plus puissante de sa catégorie. Mais avec la BMW R 1200 GS, vous aurez toujours le sentiment d’être sur la bonne moto au bon moment. En effet, ce trail fait ressentir un sentiment de bien-être sans égal.  Puis, on trouve que ce modèle est très abouti. Tenue de route, polyvalence absolue, moteur plus souple et agréable, facilité de conduite, équipement technologique de pointe, etc. la R 1200 GS a tout pour plaire. De plus, elle offre un confort de haut niveau.  Seul petit bémol, sa bulle est plutôt basse. Mais vous pouvez la customiser à votre guiser. Prévoyez environ 16 000 € pour vous procurer cette moto trail.'),(129,'Suzuki DL 1000 V-Strom','assets/images/trail4.jpg',1,'Pas très chère, la Suzuki DL 1000 V-Strom se démarque des motos de sa catégorie. En effet, elle dispose de suspensions ajustables, et d’une technologie antipatinage en 2 phases. De plus, grâce à ses vrais pneus tout-terrain, elle ne souffrira pas même pour jeter toute une montagne.  D’un autre côté, durant les premiers kilomètres, on a tendance à penser que ce trail associe l’esbroufe avec le snobisme. Pourtant, vous prendrez plaisir au guidon après quelque temps. Par ailleurs, on trouve que son moteur est parfait pour du cruising, de la ville et du tourisme. Il n’est pas furieux, mais rapide.  Bref, la DL 1000 V-Strom de Suzuki est confortable et homogène. Pour l’avoir, prévoyez un budget d’environ 13 000 €.'),(130,'KTM Duke 790','assets/images/road1.png',4,'Et c\'est la 790 Duke de chez KTM qui ouvre ce top 10. Moins efficace que la 890 mais mieux placée en terme de tarif, ce \"scalpel\" est une moto ultra agile et maniable, doté d\'un moteur bicylindre très joueur, qui s\'exprime à bas comme à haut régime. En 2023, les choses changent quelques peu pour la 790 Duke. Un modèle de 104 ch en version full cohabitait initialement avec une version L \"dégonflée\" à 95 ch dans la gamme de la marque autrichienne. Elles laissent maintenant toutes deux place à un unique modèle de duke 790 de 95 ch et donc bridable en A2.  Position typée Supermotard et mode de conduite désactivant l\'ABS arrière, cette machine est pensée avant tout pour se faire plaisir tout en restant accessibles à la majorité des motards. Les aides électroniques qui accompagnent la machine permettent de personnalisée son expérience de conduite comme vous le souhaitez et sont un vrai plus pour cette gamme de prix. En revanche, bicylindre oblige, les bas régimes ne sont pas d\'une grande souplesse et le feeling du frein avant laisse un peu à désirer'),(131,'Yamaha MT-07','assets/images/road2.png',4,'Roadster (et même moto) la plus vendues en France plusieurs années d\'affiliées, la MT- O7 est une moto avec un rapport qualité/prix incroyable. Dotée d\'un moteur très expressif avec un bicylindre en L développant 73 ch, cette moto est joueuse, maniable et adaptée pour le plus grand nombre. Elle n\'est pas arrivée en tête des ventes pour rien. Avec une bonne tenue de route, un moteur coupleux, un tarif compétitif, la MT-07 séduit toujours autant grâce à son rapport prix/plaisir au top. On dirait aussi que cette machine a été conçue spécialement pour les wheelings, tellement son couple et son équilibre naturel rendent les roues arrières faciles à exécuter (par des professionnels sur route fermée bien entendu). Cette année, l\'ancien compteur est remplacé par un tout nouvel écran TFT, petite touche de modernité qui fait augmenter légèrement son tarif. On pourra par contre lui reprocher d\'avoir toujours un freinage peu mordant et des suspensions avant qui plongent encore beaucoup, notamment pour une conduite plus sportive.'),(132,'Honda CB 750 Hornet','assets/images/road3.png',4,'Cette moto pourrait bien rebattre les cartes sur le segment des roadsters de moyennes cylindrées. C\'est LA nouveauté de l\'année. Avec un prix très bien placé, un moteur coupleux dès les bas régimes et une partie cycle de qualité, cette Hornet pourrait bien faire de l\'ombre à la MT-07. Digne successeure de la 600 Hornet arrêtée en 2014, elle n\'a pourtant plus rien à voir avec l\'ancien millésime : disponible avec toutes les aides électroniques du moment, écrans TFT, courbes plus tranchées et moteur bicylindre qui vient remplacer le 4 pattes d\'origine, Honda a voulu créer une moto fonctionnelle, efficace et accessible à tous. Son surnom \"le frelon\" fait entendre un air racé et agressif, qui pourtant ne se retrouve pas forcement dans cette version finale par rapport aux communications de la marque à son annonce. On a plus l\'impression qu\'il s\'agit d\'une cb 500 f maquillée plutôt que d\'une moto avec une véritable signature esthétique. Les quelques autres reproches que l\'on peut lui faire concernent les finitions, assez sommaires, et également un manque de rigidité de la fourche pour les régimes plus soutenus. Les 5 ans de garantie témoignent cependant de la fiabilité de ce modèle, signature propre à la marque nippone'),(133,'Kawasaki Z 900','assets/images/road4.png',4,'Designée dans le très reconnaissable style Sugomi, la Z900 est un modèle qui reste très prisé des motards et offre toujours de belles prestations. Son moteur très onctueux est son argument majeur : il reprend facilement des tours, ne cogne pas à basse vitesse et délivre une belle poussée sur toute la plage du compteur, même s\'il s\'exprime surtout à hauts régimes. C\'est une moto facile de prise en mains, avec un châssis de qualité et des suspensions qui font le travail. Sa sonorité est assez atypique, avec une boite à air qui s\'entend parfois plus que le pot d\'échappement lui-même et qui donne l\'impression d\'\'un râle assez envoûtant à l\'oreille. On pourra lui reprocher en revanche un poids assez élevé par rapport à ses concurrentes directes et un amortisseur arrières un peu trop souple quand on commence à rouler fort. Le côté très linéaire du moteur peut aussi faire perdre un peu en sensation, notamment pour les amateurs de machines saute-mouton.'),(134,'Yamaha MT-09 SP','assets/images/road5.png',4,'On retrouve en 6ème place une autre Yamaha : la MT 09 dans sa version SP. Sur cette version améliorée du modèle original, les problèmes inhérents aux suspensions ont été gommés avec le remplacement de la fourche et de l\'amortisseur d\'origine pas des pièces hauts de gamme Öhlins. Ce qui fait que cette moto se retrouve dans notre sélection, c\'est son moteur et le rapport qualité prix qu\'elle propose. Dotée d\'un 3 cylindres de 119 ch, Yamaha a fait le paris de miser davantage sur le couple délivré plutôt que sur la puissance globale de la machine. Et pour cause, ce moteur est une vraie bombe qui vous tire les bras à chaque accélération. Le châssis a été retravaillé par rapport aux millésimes précédents et apporte une meilleure tenue de route, élément qui faisait aussi défaut sur les modèles passés. Légère, maniable et pêchue, la MT-09 se dote également d\'un échappement en double sortie situé au bas de la moto et travaillée pour obtenir un son stéréo particulier qui fait chanter comme il faut ce 3 cylindres. En revanche, le freinage reste tout de même en dessous des performances de la machine et les finitions laissent un peu à désirer pour cette gamme de prix.'),(139,'CF MOTO 650 ADVENTURA','assets/images/route5.jpg',3,'Arrivée sur le marché en 2022, la nouvelle moto aventurière offre une alternative abordable et attrayante avec un design moderne. Bien équipée pour son prix, elle offre une conduite dynamique et comprend un siège de grande taille qui favorise le confort. C’est la moto parfaite pour les débutants ou pour ceux qui ont un budget réduit et ne souhaitent pas faire de concession sur le style ! Moteur : 4 temps, 649 cc Puissance : 61 chevaux/56 Nm Transmission : 6 vitesses Poids à vide : 218 kg '),(140,'KTM SUPER ADVENTURE S 1290','assets/images/route3.png',3,'Moteur : 4 temps, 1 301 cc Puissance : 160 chevaux/138 Nm Transmission : 6 vitesses Poids à vide : 220 kg 160 chevaux et 138 Nm : c’est bien la puissance que vous offre cette moto routière de tourisme ! Fiable et économe en carburant, elle bénéficie d’intervalles prolongés entre les entretiens, soit 15 000 km d’aventure.  En plus de ses performances et de sa maniabilité, elle vous offre une ergonomie idéale avec son guidon réglable et son nouvel écran TFT anti-rayures de'),(141,'SUZUKI VSTROM 650','assets/images/rout1.jpg',3,'Moteur : 4 temps, 645 cc Puissance : 71 chevaux Transmission : 6 vitesses Poids à vide : 216 kg Dotée de la même technologie de traction que la GSX, la VStrom vous offre tout autant de stabilité et de contrôle. Elle se chausse d’une roue de 19 pouces à l’avant et de 17 pouces à l’arrière ainsi que de pneus Bridgestone conçus sur mesure. Si vous cherchez une moto de route aventurière conçue pour une conduite polyvalente sur différents types de terrains, la Suzuki vous tend les bras !  Elle est pour sa part animée par un moteur bicylindre en V de 645 cm3 dont 60 composants ont été retravaillés pour un rendement supérieur et une consommation réduite.'),(142,'Aprilia RSV4 Factory (320 Km/h)','assets/images/sp2.png',2,'En 2021, la sportive de Noale (Italie) voit sa cylindrée passer de 999,6 à 1099 cm3 grâce à une augmentation de l’alésage. L’Aprilia RSV4 Factory est par là même interdite de toute compétition, mais ce gain de centimètres cubes fait d’elle l’une des sportives les plus rapides au monde sur circuit.  La firme italienne propose également une version exclusive baptisée Aprilia RSV4 Factory dotée d’une carrosserie en fibre de carbone avec winglets façon MotoGP et d’un échappement Akrapovic.  Moteur : V4 à 65 de 1099 cm3 à refroidissement liquide et DACT. Puissance/Couple : 217 ch et un couple maxi de 125 Nm à 10 500 tr/min Accélération : 0-100 km/h : en 3,1 secondes Prix : Aprilla RSV4 1100 (20 999 €) et Aprilla RSV4 Factory (25 999 €)'),(143,'Honda CBR 1000 RR-R Fireblade SP 2022 (300 km/h)','assets/images/sp7.png',2,'En 2022, la marque ailée fête les 30 ans de la CBR 900 RR FireBlade. Cette moto fut une claque pour les autres constructeurs, car elle jouissait d’un ratio poids/puissance encore jamais vu avec 124 ch pour 185 kg.  Pour commémorer cette anniversaire, Honda propose une version SP reprenant les coloris et les jantes dorées de la première CBR, mais surtout des suspensions Öhlins et un freinage Bembo. En 2020, les ingénieurs du HRC avaient totalement retravaillé le 4 cylindres en ligne, s’inspirant de la RC213V de MotoGP. La Honda CBR 1000RR-R Fireblade est donc ce qui se fait de mieux en matière d’hypersportives sauce wasabi comme le résume la philosophie de développement : « Born to Race ». Les autres sportives nippones (Kawasaki ZX-10 R, Yamaha R1 et Suzuki GSX-R 1000) sont à la traine et proposent 10 à 15 équidés de moins.  Moteur : 4 cylindres en ligne DACT de 999 cm3 à refroidissement liquide Puissance/Couple : 215 ch /112,5 Nm Accélération 0-100 km/h : 3 secondes Prix : 22 099 € & 26 999€ (version 30e anniversaire)'),(144,'Suzuki GSX 1300 R Haybusa (299 km/h)','assets/images/sp6.png',2,'Celle dont le nom signifie « faucon pèlerin » en japonais est une vraie icône motocycliste née à la fin des années 90. Ce pousse au crime était alors la moto la plus rapide au monde et énervait quelque peu la sécurité routière.  Sortie en 2021, cette troisième génération voit son quatre cylindres passer de 1340 à 1440 cm3.  Contre toute attente, elle s’avère moins fringante (190 chevaux et 299 Km/h) que la « Bus » de première génération. Gageons que ces chiffres sont « politiquement corrects » et que moyennant un stage 1, la GSX 1300 R Haybusa retrouvera ses ailes d’antan ! Ne parlons pas du montage d’un turbo comme cela est commun aux États-Unis qui fait de ce gros cube une machine quasiment aussi rapide que la Kawasaki H2R.  Le léger toilettage de cette Sport-GT et non hypersportive portait en 2021 sur l’ajout d’aides à la conduite, de suspensions KYB revues et d’un léger relifiting de la carrosserie.'),(145,'Ducati Superleggera V4 2020 (320 km/h)','assets/images/sp1.png',2,'Cette Ducati est la première moto au monde à disposer d’une partie-cycle (cadre, bras oscillant monobras et jantes BST) intégralement réalisée en fibre de carbone. Grâce à ce noble matériau, l’italienne ne pèse que 159 kg (152 kg avec le kit racing).  Animée par le V4 Desmosedici Stradale R en configuration racing (234 ch), elle possède un incroyable ratio poids/puissance de 1,54 cheval par kilo.  La Ducati Superleggera V4 est sans nul doute l’hypersportive de série la plus proche d’une machine de MotoGP !  Moteur : Desmosedici Stradale 90° V4 de 998 cm3 Puissance/ Couple : 224 ch et 116 Nm (234 ch et 119 Nm avec l’échappement racing) Prix : 100 000 € (500 exemplaires construits)'),(146,'Kawasaki Ninja H2R (350 km/h)','assets/images/sp4.png',2,'Si vous cherchez la moto de route la plus rapide au monde dans l’absolu, ne cherchez plus. Allez à la concession Kawasaki la plus proche et passez commande ! Seul hic, elle ne se plie pas au « wokisme motocycliste ambiant ». Les normes Euro 5 et autres ZFE, elle s’en tape comme de l’an 40 ! Revers de la médaille, la Kawasaki Ninja H2R n’est donc plus homologuée en Europe.  Son 4 cylindres compressé conçu en partenariat avec les divisions Turbines à gaz et Aérospatiale du groupe KHI (Kawasaki Heavy Industries) lui permet de générer une puissance supérieure à une machine de MotoGP. La firme d’Akashi enrobe ce moteur dans un écrin de carbone serti d’appuis aérodynamiques fort utiles.  Moteur : 4 cylindres en ligne DACT de 998 cm3 à compresseur Puissance/ Couple : 310 et jusqu’à 326 ch avec le RAM Air activé et 156 Nm Accélération de 0-100 km/h : moins de 3 secondes Prix : 55 000 €'),(147,'Street Glide ST','assets/images/hr1.jpg',1,'Modèles Street Glide ST et Road Glide ST  Harley-Davidson optimise les performances des Baggers et transpose dans la rue le style impressionnant des machines de course qui ont remporté le championnat King of the Baggers Moto America, avec le lancement des modèles Street Glide® ST et Road Glide® ST.'),(148,'Road Glide ST','assets/images/hr1.jpg',7,'Destinés aux motards qui souhaitent aborder les virages avec confort, les modèles ST bénéficient de caractéristiques conférées aux modèles Grand American Touring de Harley-Davidson dont les freins interconnectés Reflex™ de Brembo® avec ABS, le système d’info-divertissement Boom!™ Box GTS avec écran tactile couleur et navigation, le régulateur de vitesse et les phares Daymaker® à LED.'),(149,'Low Rider S et Low Rider ST','assets/images/hr2.jpg',7,'Modèles Low Rider S et Low Rider ST  Le Low Rider S et le nouveau Low Rider ST offrent la maniabilité exceptionnelle du châssis Harley-Davidson® Softail® et les performances éblouissantes du moteur V-Twin Milwaukee-Eight® 117.'),(150,'Low Rider ST','assets/images/hr3.jpg',7,'Nous nous sommes inspirés des designs emblématiques conçus par Willie G. dans les années 80 et leur avons conféré une nouvelle identité en introduisant une touche de modernité.'),(151,'CVO Road Glide Limited','assets/images/hr4.jpg',7,'Le modèle CVO Tri Glide est un Trike très haut de gamme qui offre un style distinctif, des performances puissantes et des capacités uniques sur longue distance, ainsi que la confiance supplémentaire d’une troisième roue. Le CVO Tri Glide profite d’un son de qualité supérieure, de luxueuses caractéristiques de confort, de finitions exceptionnelles et d’une attention particulière apportée aux détails, sur un châssis conçu pour répondre aux exigences d’un Trike. Améliorations de la sécurité du motard en virage par Harley-Davidson  De série sur les modèles CVO et en option sur tous les modèles Grand American Touring, dont les modèles Street Glide ST et Road Glide ST, les améliorations de la sécurité du motard en virage par Harley-Davidson sont un ensemble de technologies conçues pour aider le motard à maintenir la trajectoire prévue en courbe.Cet ensemble offre les améliorations suivantes :  – Freins électroniques interconnectés améliorés en virage – ABS amélioré en virage – Contrôle de traction amélioré en virage avec modes de pilotage – Contrôle du couple résiduel en virage – Contrôle de maintien du véhicule – Contrôle de la pression des pneus (TPMS)');
+/*!40000 ALTER TABLE `images` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `mdp` varchar(225) NOT NULL,
+  `email` varchar(225) NOT NULL,
+  `role` varchar(255) DEFAULT '24680ZRYIP',
+  `firstname` varchar(255) DEFAULT NULL,
+  `isPremium` int DEFAULT '1',
+  `isVideoPlus` tinyint(1) DEFAULT '0',
+  `avatar` varchar(225) DEFAULT NULL,
+  `descriptionProfil` varchar(2250) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'Thomas','toto','Thomas-Admin@gmail.com','24680ZRYIP',NULL,1,0,'assets/images/hr1.jpg','Développeur web passionné par les dernières technologies, il est constamment à la recherche de nouvelles façons d\'innover et d\'améliorer les expériences en ligne. Sa créativité et sa curiosité font de lui un atout précieux pour tout projet web.'),(2,'Ledude','$argon2d$v=19$m=65536,t=3,p=1$aRNOMg+jriJ/7MiG5Ota0A$oxj8OyfcvU9HcBh1faPkQomplSO06GFkc3zdtl9XAz0RQ+hSVJ2Jl7Kxf5xOrcD8OiQ','Thomas@gmail.com',NULL,NULL,NULL,NULL,'assets/images/team3.png','LeDude, avec son approche novatrice, repousse les limites de la conception web. Son esprit visionnaire lui permet de créer des expériences utilisateur uniques, en utilisant les dernières technologies pour offrir des interfaces intuitives et engageantes. Il est aussi efficase que ses muscles !'),(3,'Aurélie','$argon2d$v=19$m=65536,t=3,p=1$a3OZNOWF2guOO5lEEjtGEg$FQyzQLNDPJOmf6oIELf4tIDvuljF0KUGqL/HkM4rpkGsZf6S5E/Erw3CYJv/9uEqTi0','oxo@gmail.com','13579AETUO','',1,0,'assets/images/team4.jpg','Aurélie, une web développeuse passionnée, allie créativité et expertise technique pour concevoir des sites web époustouflants. Son sens esthétique affiné et sa maîtrise des langages de programmation font d\'elle une référence incontournable.'),(4,'Martin','$argon2d$v=19$m=65536,t=3,p=1$Om4Xsjk+MPQyFA5AcF12EQ$rEoYqItJGVJUsLVVz+TaaR2fLW/fQlmZcZeZVWzb4LXDcU+JCKCGfyiwGT3QpzNymZk','ixi@gmail.com','24680ZRYIP',NULL,1,0,'assets/images/team2.jpg','Martin, développeur polyvalent, excelle dans la résolution de problèmes complexes. Sa profonde compréhension des architectures web lui permet de concevoir des applications robustes et performantes, garantissant une expérience fluide et fiable pour les utilisateurs.'),(106,'nouveau','$argon2d$v=19$m=65536,t=3,p=1$Nbjd+FGlOasoTUaKqUpSZw$COiAl0Cbesard6QrrLRgYbWSVnfN32lxLEOUdI3LFpxxXSWdy8b4bZQB8rvazcrc3/U','nouveau@gmail.com','24680ZRYIP',NULL,1,0,NULL,NULL),(107,'test','$argon2d$v=19$m=65536,t=3,p=1$ANsBlocrIqJKW8CZepbv9Q$hHkgwbSnqrPXCDNwOKY/N1ehjgtcozF3S/xDew7L+lGidivPMLwYfNBiZhzE8msNAlo','test@gmail.com','24680ZRYIP',NULL,1,0,NULL,NULL),(108,'fezfzegfaegz','$argon2d$v=19$m=65536,t=3,p=1$2tLxJ+NXsYJVMFBnnOOmnA$3SIBx08BZS9R/ycosFQxn/QV015U9Ht+407r3ylt3F7M2qIsN/O2nA1AKhZ5r0saAxw','zfezfzf@toto.com','24680ZRYIP',NULL,1,0,NULL,NULL),(109,'zoeifhzef','$argon2d$v=19$m=65536,t=3,p=1$sXHywptLNYofTAwU+AGLAg$RlJNRd6qfTQt4a56lWe61sJ9NKOcYpnBn1QsRqN5HEPuVYdrITrAUg2oMDM4I/EVcsE','zefzfzeg@toto.com','24680ZRYIP',NULL,1,0,NULL,NULL),(111,'gegergeg','$argon2d$v=19$m=65536,t=3,p=1$Ho8UUbAoCbeiJo85OBEHZg$/vy8tieQcXfVFeJSAgF2yGfFH5oULbANCGwMemwLppkQLmeqPgTXKhWuQP4vn798Eiw','zeafafazefz@popo.com','24680ZRYIP',NULL,1,0,NULL,NULL),(113,'zoihfizouhf','$argon2d$v=19$m=65536,t=3,p=1$yGtsSXtNTO9BfED+1VdVhw$99BP9SopA6reGjqeDEcfcbOzN6vz+v4SUSUMOAWPM3Y4Yuw4L1imUDePIa20cbJsDAA','azghfbauzihf@toto.com','24680ZRYIP',NULL,1,0,NULL,NULL),(114,'zfeihafiu','$argon2d$v=19$m=65536,t=3,p=1$bC7d9sj8ycVoHU6r/KtXhA$q3z3KMKq55VTc42CQrwJdEndcHK5PXlyvYhpDxhQ1eza9rXum4vbq7rnWIBvayNhC+c','zefazefazefazef@zizi.Com','24680ZRYIP',NULL,1,0,NULL,NULL),(119,'zfefzfzfzef','$argon2d$v=19$m=65536,t=3,p=1$vW4N9pz7+LouzUVCAZpkPw$KT/V5j9xW+6AVlverA3eSMm8MhZRftajZLoUbPtA/W2Q3mtPSksYKG400TqU6oQHWVk','zfefzfzfzef@toto.com','24680ZRYIP',NULL,1,0,NULL,NULL),(121,'zeffaafaeg','$argon2d$v=19$m=65536,t=3,p=1$IR6+Lh6WDs7jQ1jPeqVA6g$//EOwJxVF07zKyNQ4bjfybVQNcgE8dZlVYI5roiKfWBwHAzwsBAZ93RQ50dHc4iltrg','zeffaafaeg@toto.Com','24680ZRYIP',NULL,1,0,NULL,NULL),(122,'zaefgageavgag','$argon2d$v=19$m=65536,t=3,p=1$6shQpVvzXUe3s+UkRATypw$ofPuYRwonbxUpEfkb0Qt0TqrpnWYHYRcTONBufqY0FvPuVT8JZA8v67arTJSnnTEIaM','zaefgageavgag@toto.com','24680ZRYIP',NULL,1,0,NULL,NULL);
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2023-06-15 20:59:59
