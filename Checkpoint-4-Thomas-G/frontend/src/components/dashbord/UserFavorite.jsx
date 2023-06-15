@@ -177,7 +177,7 @@ export default function UserFavorite() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Lire la suite
+                  Lire la suite :
                 </a>
               </div>
             ))}
