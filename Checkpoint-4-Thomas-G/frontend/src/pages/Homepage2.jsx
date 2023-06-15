@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import UserFavorite from "../components/dashbord/UserFavorite";
 import AccountMenu2 from "../components/dashbord/AccountMenu2";
 import { useAuth } from "../context/AuthContext";
@@ -8,6 +9,7 @@ import "../scss/index.css";
 function Homepage2() {
   const { userInfo, reset } = useAuth();
   const firstname = userInfo?.firstname || "";
+  const navigate = useNavigate();
 
   return (
     <div className="main-homepage-conteneur">
@@ -40,7 +42,13 @@ function Homepage2() {
         </div>
       ) : (
         <div>
-          <p style={{ color: "white" }}>CONNEXION - INSCRIPTION</p>
+          <button
+            className="connexion-inscription-homepage"
+            type="button"
+            onClick={() => navigate("/connexion")}
+          >
+            Connexion - Inscription
+          </button>
           <div>
             <UserFavorite />
           </div>{" "}

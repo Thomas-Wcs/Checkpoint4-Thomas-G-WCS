@@ -12,6 +12,7 @@ body {
     display: flex;
     justify-content: space-between;
   }
+
   .conteneur-image-logo-home {
     background-color: yellow;
     display: flex;
@@ -20,7 +21,6 @@ body {
     align-items: center;
     border-radius: 80px;
   }
-
   .logo-front-moto {
     width: 100px;
     height: 100px;
@@ -48,6 +48,18 @@ body {
       margin-right: 5%;
       margin-top: 10%;
     }
+  }
+}
+.connexion-inscription-homepage {
+  color: #000000;
+  background-color: yellow;
+  margin: 80px;
+  padding: 10px;
+  border-radius: 30px;
+  font-size: 18px;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
   }
 }
 

@@ -34,38 +34,27 @@ function AboutPage() {
       <div className="texte-about-propos">
         <h1>A propos</h1>
         <p className="about-para-profil-section">
-          Le meilleur des films rien que pour vous !
-        </p>
-        <p className="about-para-profil-section">
-          Ce site est un projet étudiant réalisé dans le cadre de la formation
-          Web Developpeur full-stack de la Wild Code School de Lyon.
           <br />
-          <br /> Le projet professionnel de développement web réalisé par des
-          étudiants consistait à créer une plateforme OTT (Over-The-Top) de
-          streaming vidéo. Ce projet ambitieux visait à offrir aux utilisateurs
-          une expérience de divertissement en ligne exceptionnelle, en mettant à
-          leur disposition une vaste bibliothèque de contenus vidéo de haute
-          qualité.
+          <br /> "Découvrez l'univers envoûtant des motos sur notre site
+          d'actualités dédié ! Restez informé(e) des dernières tendances, des
+          nouveaux modèles, des courses palpitantes et des conseils d'experts
+          passionnés. Vivez la passion de la moto à travers nos articles concis
+          et percutants. Rejoignez-nous et partagez votre amour de la route sur
+          deux roues !"
           <br />
-          <br /> Les 4 étudiants ont conçu une interface utilisateur conviviale
-          et attrayante, permettant aux utilisateurs de naviguer facilement à
-          travers les différentes sections de la plateforme. <br />
-          <br />
-          Ce projet a été une expérience enrichissante pour les étudiants, leur
-          permettant de mettre en pratique leurs connaissances et de se préparer
-          à une carrière prometteuse dans le domaine du développement web et du
-          divertissement numérique.
+          <br /> "Bientôt, vous pourrez partager la beauté de votre moto avec
+          notre communauté en téléchargeant vos propres photos ! Restez à
+          l'affût !" <br />
           <br />
           <br />
-          Merci à <strong>Guillaume Crégut</strong> et à la
-          <strong> Wild Code School de Lyon </strong> pour cette formation très
-          enrichissante !
+          Merci cher <strong>motard</strong> de partager ce site à tous tes amis
+          motards !<strong> Moto'API </strong>
           <br />
           <br />
           Voici une brève présentation de l'équipe :
         </p>
       </div>
-      {data.slice(0, 1).map((item, index) => (
+      {data.slice(0, 4).map((item, index) => (
         <section
           className="hidden"
           // eslint-disable-next-line react/no-array-index-key

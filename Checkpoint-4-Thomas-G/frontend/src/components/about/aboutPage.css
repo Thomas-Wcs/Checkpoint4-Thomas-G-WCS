@@ -26,11 +26,16 @@ section {
 }
 .texte-about-propos {
   display: grid;
+  color: yellow;
   place-items: center;
   align-content: center;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-image: url("../../assets/banderole5.jpg");
+  background-color: black;
   background-size: cover;
+  position: relative;
+  padding-bottom: 20px;
 }
+
 .profil-about-image {
   width: 30%;
   border-radius: 30px;
