@@ -52,12 +52,11 @@ const edit = (req, res) => {
 };
 
 const add = async (req, res) => {
-  const { pictures } = req.body;
+  const { pictures, text, lienArticle } = req.body;
   const { file } = req;
   if (!file) {
-    return res.sendStatus(500);
+    return res.status(500).send("Le fichier a upload est manquant");
   }
-
   const baseFolder = path.join(
     __dirname,
     "..",
@@ -80,16 +79,20 @@ const add = async (req, res) => {
     const result = await models.adverts.insert({
       pictures,
       picture_link,
+      text,
+      lienArticle,
     });
 
     const newAdvert = {
       pictures,
       picture_link,
+      text,
+      lienArticle,
       id: result,
     };
     return res.status(201).json(newAdvert);
-  } catch (e) {
-    return res.status(500).send(e.message);
+  } catch (err) {
+    return res.status(500).send(err);
   }
 };
 

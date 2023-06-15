@@ -54,8 +54,12 @@ function VideoUpdate() {
         link: newImageData.link,
         category_id: newImageData.category_id,
       })
-      .then(() => {
-        navigate("/adminPanel/videosTable");
+      .then((res) => {
+        if (res.status === 204) {
+          setTimeout(() => {
+            navigate("/adminPanel/videosTable");
+          }, 400);
+        }
       })
       .catch((error) => {
         console.error(error);

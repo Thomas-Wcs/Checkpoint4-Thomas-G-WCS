@@ -11,15 +11,25 @@ class AdvertsManager extends AbstractManager {
 
   insert(adverts) {
     return this.database.query(
-      `insert into ${this.table} (pictures, picture_link) values (?, ?)`,
-      [adverts.pictures, adverts.picture_link]
+      `insert into ${this.table} (pictures, picture_link, text, lienArticle) values (?, ?, ?, ?)`,
+      [
+        adverts.pictures,
+        adverts.picture_link,
+        adverts.text,
+        adverts.lienArticle,
+      ]
     );
   }
 
   update(adverts) {
     return this.database.query(
-      `update ${this.table} set pictures = ?, picture_link = ? where id = ?`,
-      [adverts.pictures, adverts.picture_link]
+      `update ${this.table} set pictures = ?, picture_link = ? text = ? lienArticle = ? where id = ?`,
+      [
+        adverts.pictures,
+        adverts.picture_link,
+        adverts.text,
+        adverts.lienArticle,
+      ]
     );
   }
 

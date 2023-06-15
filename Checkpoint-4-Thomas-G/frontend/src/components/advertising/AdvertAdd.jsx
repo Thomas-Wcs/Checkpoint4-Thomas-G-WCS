@@ -12,21 +12,24 @@ function AdvertAdd() {
   const [advertChanging, setAdvertChanging] = useState(true);
 
   const api = useAPI();
-
   const handleAddAdvert = (e) => {
     e.preventDefault();
+
     const formAdvertData = new FormData();
     formAdvertData.append("pictures", pictures);
+    formAdvertData.append("text", descriptionTextAdv);
+    formAdvertData.append("lienArticle", lienURL);
     formAdvertData.append("picture_link", fileUpload);
 
     api
       .post("/adverts", formAdvertData)
-
       .then(() => {
         setAdvertChanging(!advertChanging);
       })
       .catch((err) => console.error(err));
-    navigate("/adminPanel/advertsTable");
+    setTimeout(() => {
+      navigate("/adminPanel/advertsTable");
+    }, 400);
   };
 
   return (
