@@ -5,10 +5,23 @@ import { useAuth } from "../../context/AuthContext";
 import "../../scss/index.css";
 
 export default function UserFavorite() {
+  const api = useAPI();
   const { userInfo } = useAuth();
   if (!userInfo?.isPremium) userInfo.isPremium = 0;
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [checkedCategories, setCheckedCategories] = useState([]);
+  console.log(checkedCategories);
+
+  const handleCheckboxChange = (event, categorie) => {
+    if (event.target.checked) {
+      setCheckedCategories([...checkedCategories, categorie]);
+    } else {
+      setCheckedCategories(
+        checkedCategories.filter((cat) => cat !== categorie)
+      );
+    }
+  };
 
   const uniqueCategories = data.filter((item, index) => {
     return (
@@ -17,8 +30,6 @@ export default function UserFavorite() {
       }) === index
     );
   });
-
-  const api = useAPI();
 
   const getVideoData = async () => {
     try {
@@ -42,6 +53,10 @@ export default function UserFavorite() {
     video.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const checkedFilteredMapData = filteredData.filter((item) => {
+    return checkedCategories.includes(item.categorie_name);
+  });
+
   return (
     <div className="main-div-profil-video">
       <div className="title-videos-favorites">
@@ -61,37 +76,68 @@ export default function UserFavorite() {
         <div className="selection-des-categories">
           {uniqueCategories.map((categorie, index) => (
             // eslint-disable-next-line react/no-array-index-key
-            <div key={index}>
-              <h3>Categorie : {categorie.categorie_name} </h3>
-            </div>
+            <label key={index}>
+              <input
+                type="checkbox"
+                checked={checkedCategories.includes(categorie.categorie_name)}
+                onChange={(event) =>
+                  handleCheckboxChange(event, categorie.categorie_name)
+                }
+              />
+              {categorie.categorie_name}
+            </label>
           ))}
         </div>
-
         <div className="video-grid">
-          {filteredData.map((image, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <div key={index} className="video-wrapper">
-              <div className="video-content">
-                <img
-                  style={{ width: "100%", height: "70%" }}
-                  src={`${import.meta.env.VITE_APP_API_URL}${image.link}`}
-                  alt=""
-                />
-                <div className="favorite-text-and-button">
-                  <h4>{image.title}</h4>
-                  <div>
-                    {`${image.description_text.slice(0, 30)}...`}
-                    <Link
-                      to={`/video_description/${image.id}`}
-                      style={{ textDecoration: "none" }}
-                    >
-                      <p className="voir-plus-fav-video">voir plus</p>
-                    </Link>
+          {checkedCategories.length === 0
+            ? filteredData.map((image, index) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <div key={index} className="video-wrapper">
+                  <div className="video-content">
+                    <img
+                      style={{ width: "100%", height: "70%" }}
+                      src={`${import.meta.env.VITE_APP_API_URL}${image.link}`}
+                      alt=""
+                    />
+                    <div className="favorite-text-and-button">
+                      <h4>{image.title}</h4>
+                      <div>
+                        {`${image.description_text.slice(0, 30)}...`}
+                        <Link
+                          to={`/video_description/${image.id}`}
+                          style={{ textDecoration: "none" }}
+                        >
+                          <p className="voir-plus-fav-video">voir plus</p>
+                        </Link>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              ))
+            : checkedFilteredMapData.map((image, index) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <div key={index} className="video-wrapper">
+                  <div className="video-content">
+                    <img
+                      style={{ width: "100%", height: "70%" }}
+                      src={`${import.meta.env.VITE_APP_API_URL}${image.link}`}
+                      alt=""
+                    />
+                    <div className="favorite-text-and-button">
+                      <h4>{image.title}</h4>
+                      <div>
+                        {`${image.description_text.slice(0, 30)}...`}
+                        <Link
+                          to={`/video_description/${image.id}`}
+                          style={{ textDecoration: "none" }}
+                        >
+                          <p className="voir-plus-fav-video">voir plus</p>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
         </div>
         <div className="articles-afficher-actu">
           ICI LA SELECTION DE CATEGORIES
